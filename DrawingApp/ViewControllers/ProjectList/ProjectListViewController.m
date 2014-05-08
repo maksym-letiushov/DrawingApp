@@ -63,7 +63,7 @@
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+{return 0;
     return [[self.fetchedResultsController sections] count];
 }
 

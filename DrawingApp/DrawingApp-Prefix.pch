@@ -14,4 +14,10 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+
+    #import "Project+ProjectAdditions.h"
+    #import "DrawingObject+DrawingObjectAdditions.h"
+    #import "CoreDataHelper.h"
+    #import "CoreDataSetup.h"
+
 #endif

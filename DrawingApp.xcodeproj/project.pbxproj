@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C93AF09F191B708400A60A82 /* DrawingPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AF09E191B708400A60A82 /* DrawingPoint.m */; };
+		C93AF0A3191B70DF00A60A82 /* RGBAColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AF0A2191B70DF00A60A82 /* RGBAColor.m */; };
+		C93AF0A7191B72D800A60A82 /* Project+ProjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AF0A6191B72D800A60A82 /* Project+ProjectAdditions.m */; };
+		C93AF0AA191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AF0A9191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m */; };
+		C93D2649191A9FE0007A0FC6 /* DrawingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985CA191A9A29009E85D1 /* DrawingObject.m */; };
+		C93D264A191A9FE7007A0FC6 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985CC191A9A29009E85D1 /* Project.m */; };
+		C94BE0B3191B93F700D574E8 /* CoreDataSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = C94BE0B2191B93F700D574E8 /* CoreDataSetup.m */; };
+		C94BE0B7191B93F700D574E8 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C94BE0B6191B93F700D574E8 /* CoreDataHelper.m */; };
 		C9998585191A8774009E85D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9998584191A8774009E85D1 /* Foundation.framework */; };
 		C9998587191A8774009E85D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9998586191A8774009E85D1 /* CoreGraphics.framework */; };
 		C9998589191A8774009E85D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9998588191A8774009E85D1 /* UIKit.framework */; };
@@ -23,10 +31,6 @@
 		C99985AF191A8774009E85D1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999858A191A8774009E85D1 /* CoreData.framework */; };
 		C99985B7191A8774009E85D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C99985B5191A8774009E85D1 /* InfoPlist.strings */; };
 		C99985B9191A8774009E85D1 /* DrawingAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985B8191A8774009E85D1 /* DrawingAppTests.m */; };
-		C99985CD191A9A29009E85D1 /* DrawingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985CA191A9A29009E85D1 /* DrawingObject.m */; };
-		C99985CE191A9A29009E85D1 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985CC191A9A29009E85D1 /* Project.m */; };
-		C99985D1191A9AA5009E85D1 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985D0191A9AA5009E85D1 /* Project.m */; };
-		C99985D4191A9AA6009E85D1 /* DrawingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985D3191A9AA6009E85D1 /* DrawingObject.m */; };
 		C99985DF191A9DAD009E85D1 /* ProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985DB191A9DAD009E85D1 /* ProjectDetailViewController.m */; };
 		C99985E0191A9DAD009E85D1 /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985DE191A9DAD009E85D1 /* ProjectListViewController.m */; };
 /* End PBXBuildFile section */
@@ -42,6 +46,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C93AF09D191B708400A60A82 /* DrawingPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingPoint.h; sourceTree = "<group>"; };
+		C93AF09E191B708400A60A82 /* DrawingPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingPoint.m; sourceTree = "<group>"; };
+		C93AF0A1191B70DF00A60A82 /* RGBAColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBAColor.h; sourceTree = "<group>"; };
+		C93AF0A2191B70DF00A60A82 /* RGBAColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGBAColor.m; sourceTree = "<group>"; };
+		C93AF0A5191B72D800A60A82 /* Project+ProjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+ProjectAdditions.h"; sourceTree = "<group>"; };
+		C93AF0A6191B72D800A60A82 /* Project+ProjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+ProjectAdditions.m"; sourceTree = "<group>"; };
+		C93AF0A8191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DrawingObject+DrawingObjectAdditions.h"; sourceTree = "<group>"; };
+		C93AF0A9191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DrawingObject+DrawingObjectAdditions.m"; sourceTree = "<group>"; };
+		C94BE0B1191B93F700D574E8 /* CoreDataSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataSetup.h; sourceTree = "<group>"; };
+		C94BE0B2191B93F700D574E8 /* CoreDataSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataSetup.m; sourceTree = "<group>"; };
+		C94BE0B5191B93F700D574E8 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
+		C94BE0B6191B93F700D574E8 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		C9998581191A8774009E85D1 /* DrawingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9998584191A8774009E85D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9998586191A8774009E85D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -101,6 +117,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C93AF09C191B708400A60A82 /* DrawingPoint */ = {
+			isa = PBXGroup;
+			children = (
+				C93AF09D191B708400A60A82 /* DrawingPoint.h */,
+				C93AF09E191B708400A60A82 /* DrawingPoint.m */,
+			);
+			path = DrawingPoint;
+			sourceTree = "<group>";
+		};
+		C93AF0A0191B70AA00A60A82 /* RGBAColor */ = {
+			isa = PBXGroup;
+			children = (
+				C93AF0A1191B70DF00A60A82 /* RGBAColor.h */,
+				C93AF0A2191B70DF00A60A82 /* RGBAColor.m */,
+			);
+			path = RGBAColor;
+			sourceTree = "<group>";
+		};
+		C93AF0AC191B739F00A60A82 /* Project+ProjectAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				C93AF0A5191B72D800A60A82 /* Project+ProjectAdditions.h */,
+				C93AF0A6191B72D800A60A82 /* Project+ProjectAdditions.m */,
+			);
+			name = "Project+ProjectAdditions";
+			sourceTree = "<group>";
+		};
+		C93AF0AD191B73A900A60A82 /* DrawingObject+DrawingObjectAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				C93AF0A8191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.h */,
+				C93AF0A9191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m */,
+			);
+			name = "DrawingObject+DrawingObjectAdditions";
+			sourceTree = "<group>";
+		};
+		C93D264B191AA553007A0FC6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C94BE0B4191B93F700D574E8 /* CoreDataHelper */,
+				C94BE0B0191B93F700D574E8 /* CoreDataSetup */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C94BE0B0191B93F700D574E8 /* CoreDataSetup */ = {
+			isa = PBXGroup;
+			children = (
+				C94BE0B1191B93F700D574E8 /* CoreDataSetup.h */,
+				C94BE0B2191B93F700D574E8 /* CoreDataSetup.m */,
+			);
+			path = CoreDataSetup;
+			sourceTree = "<group>";
+		};
+		C94BE0B4191B93F700D574E8 /* CoreDataHelper */ = {
+			isa = PBXGroup;
+			children = (
+				C94BE0B5191B93F700D574E8 /* CoreDataHelper.h */,
+				C94BE0B6191B93F700D574E8 /* CoreDataHelper.m */,
+			);
+			path = CoreDataHelper;
+			sourceTree = "<group>";
+		};
 		C9998578191A8774009E85D1 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				C99985D8191A9DAD009E85D1 /* ViewControllers */,
+				C93D264B191AA553007A0FC6 /* Controllers */,
 				C99985C8191A9A29009E85D1 /* Models */,
 				C9998595191A8774009E85D1 /* AppDelegate.h */,
 				C9998596191A8774009E85D1 /* AppDelegate.m */,
@@ -183,8 +263,12 @@
 		C99985C8191A9A29009E85D1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C93AF0A0191B70AA00A60A82 /* RGBAColor */,
+				C93AF09C191B708400A60A82 /* DrawingPoint */,
 				C99985D5191A9CCD009E85D1 /* DrawingObject */,
 				C99985D6191A9CDE009E85D1 /* Project */,
+				C93AF0AC191B739F00A60A82 /* Project+ProjectAdditions */,
+				C93AF0AD191B73A900A60A82 /* DrawingObject+DrawingObjectAdditions */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,15 +415,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C93AF0AA191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m in Sources */,
+				C93D264A191A9FE7007A0FC6 /* Project.m in Sources */,
+				C93D2649191A9FE0007A0FC6 /* DrawingObject.m in Sources */,
 				C9998597191A8774009E85D1 /* AppDelegate.m in Sources */,
+				C94BE0B7191B93F700D574E8 /* CoreDataHelper.m in Sources */,
 				C99985DF191A9DAD009E85D1 /* ProjectDetailViewController.m in Sources */,
-				C99985D1191A9AA5009E85D1 /* Project.m in Sources */,
-				C99985CE191A9A29009E85D1 /* Project.m in Sources */,
+				C93AF0A3191B70DF00A60A82 /* RGBAColor.m in Sources */,
 				C99985E0191A9DAD009E85D1 /* ProjectListViewController.m in Sources */,
 				C999859D191A8774009E85D1 /* DrawingApp.xcdatamodeld in Sources */,
-				C99985D4191A9AA6009E85D1 /* DrawingObject.m in Sources */,
-				C99985CD191A9A29009E85D1 /* DrawingObject.m in Sources */,
 				C9998593191A8774009E85D1 /* main.m in Sources */,
+				C93AF0A7191B72D800A60A82 /* Project+ProjectAdditions.m in Sources */,
+				C94BE0B3191B93F700D574E8 /* CoreDataSetup.m in Sources */,
+				C93AF09F191B708400A60A82 /* DrawingPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +634,7 @@
 				C99985BE191A8774009E85D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C99985BF191A8774009E85D1 /* Build configuration list for PBXNativeTarget "DrawingAppTests" */ = {
 			isa = XCConfigurationList;
@@ -554,6 +643,7 @@
 				C99985C1191A8774009E85D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

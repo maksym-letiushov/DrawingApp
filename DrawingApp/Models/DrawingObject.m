@@ -12,10 +12,10 @@
 
 @implementation DrawingObject
 
-@dynamic points;
+@dynamic pointsData;
 @dynamic lineWidth;
-@dynamic strokeColor;
-@dynamic fillColor;
+@dynamic strokeColorData;
+@dynamic fillColorData;
 @dynamic zIndex;
 @dynamic hasStroke;
 @dynamic hasFill;
@@ -25,10 +25,10 @@
 {
     [super awakeFromInsert];
     
-    self.points = nil;
-    self.lineWidth = @1;
-    self.strokeColor = nil;
-    self.fillColor = nil;
+    self.pointsData = nil;
+    self.lineWidth = @(LINE_WIDTH_MIN);
+    self.strokeColorData = nil;
+    self.fillColorData = nil;
     self.zIndex = @0;
     self.hasStroke = @YES;
     self.hasFill = @NO;

@@ -9,14 +9,17 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+#define LINE_WIDTH_MIN 1
+#define LINE_WIDTH_MAX 10
+
 @class Project;
 
 @interface DrawingObject : NSManagedObject
 
-@property (nonatomic, retain) NSData * points;
+@property (nonatomic, retain) NSData * pointsData;
 @property (nonatomic, retain) NSNumber * lineWidth;
-@property (nonatomic, retain) NSData * strokeColor;
-@property (nonatomic, retain) NSData * fillColor;
+@property (nonatomic, retain) NSData * strokeColorData;
+@property (nonatomic, retain) NSData * fillColorData;
 @property (nonatomic, retain) NSNumber * zIndex;
 @property (nonatomic, retain) NSNumber * hasStroke;
 @property (nonatomic, retain) NSNumber * hasFill;
