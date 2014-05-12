@@ -17,6 +17,11 @@
     return NSStringFromClass([DrawingObject class]);
 }
 
++ (NSString *)keyZIndex
+{
+    return @"zIndex";
+}
+
 - (NSArray *)pointsArray   //of Point
 {
     if (!self.pointsData) {
@@ -61,6 +66,22 @@
 {
     RGBAColor *rgbaColor = [RGBAColor RGBAColorFromUIColor:color];
     self.strokeColorData = [NSKeyedArchiver archivedDataWithRootObject:rgbaColor];
+}
+
+- (void)addCGPoint:(CGPoint)cgPoint
+{
+    NSLog(@"x=%f y=%f %s",cgPoint.x, cgPoint.y, __FUNCTION__);
+    
+    NSMutableArray *points = [NSMutableArray arrayWithArray:[self pointsArray]];
+    [points addObject:[DrawingPoint pointFromCGPoint:cgPoint]];
+    [self setPointsArray:points];
+}
+
+- (void)removePoint:(DrawingPoint *)point
+{
+    NSMutableArray *points = [NSMutableArray arrayWithArray:[self pointsArray]];
+    [points removeObject:point];
+    [self setPointsArray:points];
 }
 
 @end

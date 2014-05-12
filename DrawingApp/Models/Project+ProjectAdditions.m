@@ -15,4 +15,31 @@
     return NSStringFromClass([Project class]);
 }
 
++ (NSString *)keyDateCreated
+{
+    return @"dateCreated";
+}
+
+- (NSArray *)drawingObjectsSortedByZIndex
+{
+    NSArray *drawingObjects = [self.drawingObjects allObjects];
+    
+    drawingObjects = [drawingObjects sortedArrayUsingComparator:^NSComparisonResult(DrawingObject *obj1, DrawingObject * obj2) {
+        return [obj1.zIndex compare:obj2.zIndex];
+    }];
+    
+    return drawingObjects;
+}
+
+- (void)addDrawingObjectWithIncrementedZIndex:(DrawingObject *)value
+{
+    [self addDrawingObjectsObject:value];
+
+    NSInteger lastZIndex = [self.lastZIndex integerValue];
+    lastZIndex++;
+
+    self.lastZIndex = @(lastZIndex);
+    value.zIndex = self.lastZIndex;
+}
+
 @end

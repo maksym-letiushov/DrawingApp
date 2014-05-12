@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DrawingObject" representedClassName="DrawingObject" syncable="YES">
+        <attribute name="fillColorData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="hasFill" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasStroke" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lineWidth" optional="YES" attributeType="Integer 32" minValueString="1" defaultValueString="1" syncable="YES"/>
+        <attribute name="pointsData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="strokeColorData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="zIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="drawingObjects" inverseEntity="Project" syncable="YES"/>
+    </entity>
+    <entity name="Project" representedClassName="Project" syncable="YES">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="height" attributeType="Integer 32" minValueString="1" defaultValueString="100" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastZIndex" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="width" attributeType="Integer 32" minValueString="1" defaultValueString="100" syncable="YES"/>
+        <relationship name="drawingObjects" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DrawingObject" inverseName="project" inverseEntity="DrawingObject" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DrawingObject" positionX="538" positionY="315" width="128" height="180"/>
+        <element name="Project" positionX="261" positionY="198" width="128" height="148"/>
+    </elements>
+</model>

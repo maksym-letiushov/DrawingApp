@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "Project.h"
 #import "DrawingObject.h"
 
@@ -16,7 +17,12 @@
 
 + (NSInteger)projectsCount;
 
-+ (Project *)createProject;
-+ (DrawingObject *)createDrawingObject;
++ (Project *)createProjectWithWidth:(NSInteger)width height:(NSInteger)height;
++ (DrawingObject *)createNewDrawingObjectInProject:(Project *)project;
+
++ (void)deleteProject:(Project *)project;
+
++ (NSFetchedResultsController *)fetchResultControllerForProjects;
++ (NSFetchedResultsController *)fetchResultControllerForDrawingObjectsInProject:(Project *)project;
 
 @end

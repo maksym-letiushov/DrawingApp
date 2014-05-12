@@ -10,13 +10,6 @@
 
 @class ProjectDetailViewController;
 
-#import <CoreData/CoreData.h>
-
-@interface ProjectListViewController : UITableViewController <NSFetchedResultsControllerDelegate>
-
-@property (strong, nonatomic) ProjectDetailViewController *detailViewController;
-
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@interface ProjectListViewController : UITableViewController
 
 @end

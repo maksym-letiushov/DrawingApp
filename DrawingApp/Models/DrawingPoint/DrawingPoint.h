@@ -13,4 +13,8 @@
 @property (nonatomic, assign) NSInteger x;
 @property (nonatomic, assign) NSInteger y;
 
++ (DrawingPoint *)pointFromCGPoint:(CGPoint)cgPoint;
+
+- (CGPoint)CGPoint;
+
 @end

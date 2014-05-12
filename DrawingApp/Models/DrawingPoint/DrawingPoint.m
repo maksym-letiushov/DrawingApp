@@ -13,6 +13,16 @@ static __unsafe_unretained NSString *const yKey = @"y";
 
 @implementation DrawingPoint
 
++ (DrawingPoint *)pointFromCGPoint:(CGPoint)cgPoint
+{
+    DrawingPoint *point = [DrawingPoint new];
+
+    point.x = cgPoint.x;
+    point.y = cgPoint.y;
+    
+    return point;
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeInteger:self.x forKey:xKey];
@@ -29,5 +39,9 @@ static __unsafe_unretained NSString *const yKey = @"y";
     return self;
 }
 
+- (CGPoint)CGPoint
+{
+    return CGPointMake(self.x, self.y);
+}
 
 @end

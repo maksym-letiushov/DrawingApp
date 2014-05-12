@@ -16,15 +16,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-    UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-    splitViewController.delegate = (id)navigationController.topViewController;
-
-    UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
+//    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+//    UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+//    splitViewController.delegate = (id)navigationController.topViewController;
     
-    ProjectListViewController *controller = (ProjectListViewController *)masterNavigationController.topViewController;
-    
-    controller.managedObjectContext = [CoreDataSetup shared].managedObjectContext;
     return YES;
 }
 							

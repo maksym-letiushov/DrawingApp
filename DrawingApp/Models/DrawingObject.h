@@ -16,6 +16,7 @@
 
 @interface DrawingObject : NSManagedObject
 
+@property (nonatomic, retain) NSNumber *type;
 @property (nonatomic, retain) NSData * pointsData;
 @property (nonatomic, retain) NSNumber * lineWidth;
 @property (nonatomic, retain) NSData * strokeColorData;

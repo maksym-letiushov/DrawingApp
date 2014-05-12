@@ -12,6 +12,7 @@
 
 @implementation DrawingObject
 
+@dynamic type;
 @dynamic pointsData;
 @dynamic lineWidth;
 @dynamic strokeColorData;

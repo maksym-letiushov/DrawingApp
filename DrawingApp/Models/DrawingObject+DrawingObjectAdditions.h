@@ -9,9 +9,13 @@
 #import "DrawingObject.h"
 #import "DrawingObject.h"
 
+#import "DrawingPoint.h"
+
 @interface DrawingObject (DrawingObjectAdditions)
 
 + (NSString *)entityName;
+
++ (NSString *)keyZIndex;//zIndex
 
 - (NSArray *)pointsArray;   //of DrawingPoint
 - (UIColor *)strokeColor;
@@ -21,4 +25,9 @@
 - (void)setFillColor:(UIColor *)color;
 - (void)setStrokeColor:(UIColor *)color;
 
+- (void)addCGPoint:(CGPoint)cgPoint;
+
+- (void)removePoint:(DrawingPoint *)point;
+
 @end
+

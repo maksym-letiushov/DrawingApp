@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9150A3E191D2CF700D9E5BB /* ProjectDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A3D191D2CF700D9E5BB /* ProjectDrawViewController.m */; };
+		C9150A43191D315F00D9E5BB /* MainSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A42191D315F00D9E5BB /* MainSplitViewController.m */; };
+		C9150A48191D40F900D9E5BB /* ProjectPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A47191D40F900D9E5BB /* ProjectPictureView.m */; };
+		C9150A4C191D468700D9E5BB /* DrawingTouchesReceiverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A4B191D468700D9E5BB /* DrawingTouchesReceiverView.m */; };
+		C9150A50191D4AA700D9E5BB /* DrawingObjectPointsMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A4F191D4AA700D9E5BB /* DrawingObjectPointsMaster.m */; };
 		C93AF09F191B708400A60A82 /* DrawingPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AF09E191B708400A60A82 /* DrawingPoint.m */; };
 		C93AF0A3191B70DF00A60A82 /* RGBAColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AF0A2191B70DF00A60A82 /* RGBAColor.m */; };
 		C93AF0A7191B72D800A60A82 /* Project+ProjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AF0A6191B72D800A60A82 /* Project+ProjectAdditions.m */; };
@@ -15,6 +20,7 @@
 		C93D264A191A9FE7007A0FC6 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985CC191A9A29009E85D1 /* Project.m */; };
 		C94BE0B3191B93F700D574E8 /* CoreDataSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = C94BE0B2191B93F700D574E8 /* CoreDataSetup.m */; };
 		C94BE0B7191B93F700D574E8 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C94BE0B6191B93F700D574E8 /* CoreDataHelper.m */; };
+		C97789A5191BDAC000D8C7C8 /* ProjectListFetchRCDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C97789A4191BDAC000D8C7C8 /* ProjectListFetchRCDelegate.m */; };
 		C9998585191A8774009E85D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9998584191A8774009E85D1 /* Foundation.framework */; };
 		C9998587191A8774009E85D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9998586191A8774009E85D1 /* CoreGraphics.framework */; };
 		C9998589191A8774009E85D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9998588191A8774009E85D1 /* UIKit.framework */; };
@@ -46,6 +52,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C9150A3C191D2CF700D9E5BB /* ProjectDrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDrawViewController.h; sourceTree = "<group>"; };
+		C9150A3D191D2CF700D9E5BB /* ProjectDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDrawViewController.m; sourceTree = "<group>"; };
+		C9150A41191D315F00D9E5BB /* MainSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSplitViewController.h; sourceTree = "<group>"; };
+		C9150A42191D315F00D9E5BB /* MainSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainSplitViewController.m; sourceTree = "<group>"; };
+		C9150A46191D40F900D9E5BB /* ProjectPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectPictureView.h; sourceTree = "<group>"; };
+		C9150A47191D40F900D9E5BB /* ProjectPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectPictureView.m; sourceTree = "<group>"; };
+		C9150A4A191D468700D9E5BB /* DrawingTouchesReceiverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingTouchesReceiverView.h; sourceTree = "<group>"; };
+		C9150A4B191D468700D9E5BB /* DrawingTouchesReceiverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingTouchesReceiverView.m; sourceTree = "<group>"; };
+		C9150A4E191D4AA700D9E5BB /* DrawingObjectPointsMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingObjectPointsMaster.h; sourceTree = "<group>"; };
+		C9150A4F191D4AA700D9E5BB /* DrawingObjectPointsMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingObjectPointsMaster.m; sourceTree = "<group>"; };
+		C9150A51191D4B7000D9E5BB /* DrawDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawDefines.h; sourceTree = "<group>"; };
+		C9150A53191D4D2800D9E5BB /* DrawingGestureReceiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawingGestureReceiver.h; sourceTree = "<group>"; };
+		C93642B7191FB97100F5BD5B /* DrawingApp 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DrawingApp 2.xcdatamodel"; sourceTree = "<group>"; };
 		C93AF09D191B708400A60A82 /* DrawingPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingPoint.h; sourceTree = "<group>"; };
 		C93AF09E191B708400A60A82 /* DrawingPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingPoint.m; sourceTree = "<group>"; };
 		C93AF0A1191B70DF00A60A82 /* RGBAColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBAColor.h; sourceTree = "<group>"; };
@@ -58,6 +77,8 @@
 		C94BE0B2191B93F700D574E8 /* CoreDataSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataSetup.m; sourceTree = "<group>"; };
 		C94BE0B5191B93F700D574E8 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		C94BE0B6191B93F700D574E8 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		C97789A3191BDAC000D8C7C8 /* ProjectListFetchRCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListFetchRCDelegate.h; sourceTree = "<group>"; };
+		C97789A4191BDAC000D8C7C8 /* ProjectListFetchRCDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListFetchRCDelegate.m; sourceTree = "<group>"; };
 		C9998581191A8774009E85D1 /* DrawingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9998584191A8774009E85D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9998586191A8774009E85D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -81,10 +102,6 @@
 		C99985CA191A9A29009E85D1 /* DrawingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingObject.m; sourceTree = "<group>"; };
 		C99985CB191A9A29009E85D1 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		C99985CC191A9A29009E85D1 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
-		C99985CF191A9AA5009E85D1 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Project.h; path = Models/Project.h; sourceTree = "<group>"; };
-		C99985D0191A9AA5009E85D1 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Project.m; path = Models/Project.m; sourceTree = "<group>"; };
-		C99985D2191A9AA6009E85D1 /* DrawingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingObject.h; path = Models/DrawingObject.h; sourceTree = "<group>"; };
-		C99985D3191A9AA6009E85D1 /* DrawingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingObject.m; path = Models/DrawingObject.m; sourceTree = "<group>"; };
 		C99985DA191A9DAD009E85D1 /* ProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailViewController.h; sourceTree = "<group>"; };
 		C99985DB191A9DAD009E85D1 /* ProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailViewController.m; sourceTree = "<group>"; };
 		C99985DD191A9DAD009E85D1 /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
@@ -117,6 +134,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C9150A3B191D2CE000D9E5BB /* ProjectDraw */ = {
+			isa = PBXGroup;
+			children = (
+				C9150A3C191D2CF700D9E5BB /* ProjectDrawViewController.h */,
+				C9150A3D191D2CF700D9E5BB /* ProjectDrawViewController.m */,
+			);
+			path = ProjectDraw;
+			sourceTree = "<group>";
+		};
+		C9150A40191D315300D9E5BB /* MainSplit */ = {
+			isa = PBXGroup;
+			children = (
+				C9150A41191D315F00D9E5BB /* MainSplitViewController.h */,
+				C9150A42191D315F00D9E5BB /* MainSplitViewController.m */,
+			);
+			path = MainSplit;
+			sourceTree = "<group>";
+		};
+		C9150A44191D404B00D9E5BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C9150A49191D460300D9E5BB /* DrawingTouchesReceiverView */,
+				C9150A45191D40CC00D9E5BB /* ProjecPictureView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C9150A45191D40CC00D9E5BB /* ProjecPictureView */ = {
+			isa = PBXGroup;
+			children = (
+				C9150A46191D40F900D9E5BB /* ProjectPictureView.h */,
+				C9150A47191D40F900D9E5BB /* ProjectPictureView.m */,
+			);
+			path = ProjecPictureView;
+			sourceTree = "<group>";
+		};
+		C9150A49191D460300D9E5BB /* DrawingTouchesReceiverView */ = {
+			isa = PBXGroup;
+			children = (
+				C9150A4A191D468700D9E5BB /* DrawingTouchesReceiverView.h */,
+				C9150A4B191D468700D9E5BB /* DrawingTouchesReceiverView.m */,
+			);
+			path = DrawingTouchesReceiverView;
+			sourceTree = "<group>";
+		};
+		C9150A4D191D4A2D00D9E5BB /* DrawingObjectPointsMaster */ = {
+			isa = PBXGroup;
+			children = (
+				C9150A4E191D4AA700D9E5BB /* DrawingObjectPointsMaster.h */,
+				C9150A4F191D4AA700D9E5BB /* DrawingObjectPointsMaster.m */,
+			);
+			path = DrawingObjectPointsMaster;
+			sourceTree = "<group>";
+		};
+		C9150A52191D4D0A00D9E5BB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C9150A53191D4D2800D9E5BB /* DrawingGestureReceiver.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		C93AF09C191B708400A60A82 /* DrawingPoint */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +235,7 @@
 		C93D264B191AA553007A0FC6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C9150A4D191D4A2D00D9E5BB /* DrawingObjectPointsMaster */,
 				C94BE0B4191B93F700D574E8 /* CoreDataHelper */,
 				C94BE0B0191B93F700D574E8 /* CoreDataSetup */,
 			);
@@ -178,6 +258,15 @@
 				C94BE0B6191B93F700D574E8 /* CoreDataHelper.m */,
 			);
 			path = CoreDataHelper;
+			sourceTree = "<group>";
+		};
+		C97789A2191BDAB600D8C7C8 /* ProjectListFetchRCDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C97789A3191BDAC000D8C7C8 /* ProjectListFetchRCDelegate.h */,
+				C97789A4191BDAC000D8C7C8 /* ProjectListFetchRCDelegate.m */,
+			);
+			path = ProjectListFetchRCDelegate;
 			sourceTree = "<group>";
 		};
 		C9998578191A8774009E85D1 = {
@@ -214,6 +303,8 @@
 		C999858C191A8774009E85D1 /* DrawingApp */ = {
 			isa = PBXGroup;
 			children = (
+				C9150A52191D4D0A00D9E5BB /* Protocols */,
+				C9150A44191D404B00D9E5BB /* Views */,
 				C99985D8191A9DAD009E85D1 /* ViewControllers */,
 				C93D264B191AA553007A0FC6 /* Controllers */,
 				C99985C8191A9A29009E85D1 /* Models */,
@@ -221,12 +312,9 @@
 				C9998596191A8774009E85D1 /* AppDelegate.m */,
 				C9998598191A8774009E85D1 /* Main.storyboard */,
 				C99985A4191A8774009E85D1 /* Images.xcassets */,
-				C99985CF191A9AA5009E85D1 /* Project.h */,
-				C99985D2191A9AA6009E85D1 /* DrawingObject.h */,
-				C99985D3191A9AA6009E85D1 /* DrawingObject.m */,
-				C99985D0191A9AA5009E85D1 /* Project.m */,
 				C999859B191A8774009E85D1 /* DrawingApp.xcdatamodeld */,
 				C999858D191A8774009E85D1 /* Supporting Files */,
+				C9150A51191D4B7000D9E5BB /* DrawDefines.h */,
 			);
 			path = DrawingApp;
 			sourceTree = "<group>";
@@ -294,6 +382,8 @@
 		C99985D8191A9DAD009E85D1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C9150A40191D315300D9E5BB /* MainSplit */,
+				C9150A3B191D2CE000D9E5BB /* ProjectDraw */,
 				C99985DC191A9DAD009E85D1 /* ProjectList */,
 				C99985D9191A9DAD009E85D1 /* ProjectDetail */,
 			);
@@ -312,6 +402,7 @@
 		C99985DC191A9DAD009E85D1 /* ProjectList */ = {
 			isa = PBXGroup;
 			children = (
+				C97789A2191BDAB600D8C7C8 /* ProjectListFetchRCDelegate */,
 				C99985DD191A9DAD009E85D1 /* ProjectListViewController.h */,
 				C99985DE191A9DAD009E85D1 /* ProjectListViewController.m */,
 			);
@@ -415,17 +506,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9150A50191D4AA700D9E5BB /* DrawingObjectPointsMaster.m in Sources */,
+				C9150A4C191D468700D9E5BB /* DrawingTouchesReceiverView.m in Sources */,
 				C93AF0AA191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m in Sources */,
 				C93D264A191A9FE7007A0FC6 /* Project.m in Sources */,
 				C93D2649191A9FE0007A0FC6 /* DrawingObject.m in Sources */,
 				C9998597191A8774009E85D1 /* AppDelegate.m in Sources */,
+				C9150A43191D315F00D9E5BB /* MainSplitViewController.m in Sources */,
+				C97789A5191BDAC000D8C7C8 /* ProjectListFetchRCDelegate.m in Sources */,
 				C94BE0B7191B93F700D574E8 /* CoreDataHelper.m in Sources */,
 				C99985DF191A9DAD009E85D1 /* ProjectDetailViewController.m in Sources */,
 				C93AF0A3191B70DF00A60A82 /* RGBAColor.m in Sources */,
 				C99985E0191A9DAD009E85D1 /* ProjectListViewController.m in Sources */,
 				C999859D191A8774009E85D1 /* DrawingApp.xcdatamodeld in Sources */,
+				C9150A48191D40F900D9E5BB /* ProjectPictureView.m in Sources */,
 				C9998593191A8774009E85D1 /* main.m in Sources */,
 				C93AF0A7191B72D800A60A82 /* Project+ProjectAdditions.m in Sources */,
+				C9150A3E191D2CF700D9E5BB /* ProjectDrawViewController.m in Sources */,
 				C94BE0B3191B93F700D574E8 /* CoreDataSetup.m in Sources */,
 				C93AF09F191B708400A60A82 /* DrawingPoint.m in Sources */,
 			);
@@ -651,9 +748,10 @@
 		C999859B191A8774009E85D1 /* DrawingApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C93642B7191FB97100F5BD5B /* DrawingApp 2.xcdatamodel */,
 				C999859C191A8774009E85D1 /* DrawingApp.xcdatamodel */,
 			);
-			currentVersion = C999859C191A8774009E85D1 /* DrawingApp.xcdatamodel */;
+			currentVersion = C93642B7191FB97100F5BD5B /* DrawingApp 2.xcdatamodel */;
 			path = DrawingApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
