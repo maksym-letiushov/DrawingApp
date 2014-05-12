@@ -37,36 +37,32 @@
         return;
     }
     
-    BOOL isTwoPointsNeed = !(self.drawingObjectType == DRAWING_OBJECT_TYPE_FREE);
-    
-    DrawingObject *drawingObject = nil;
     if (isBegTouch) {
-        if (isTwoPointsNeed) {
-            self.firstTouchPoint = point;
-            return;
+        if (self.drawingObjectType == DRAWING_OBJECT_TYPE_FREE) {
+            self.curDrawingObject = [self createNewDrawingObject];
+            [self.curDrawingObject addCGPoint:point];
         } else {
-            drawingObject = [CoreDataHelper createNewDrawingObjectInProject:self.project];
-            drawingObject.type = @(self.drawingObjectType);
-            drawingObject.fillColor = nil;
-            drawingObject.strokeColor = [UIColor blackColor];
-            drawingObject.lineWidth = @(3);
-            self.curDrawingObject = drawingObject;
+            self.firstTouchPoint = point;
         }
+        return;
     } else {
-        drawingObject = self.curDrawingObject;
+        if (!self.curDrawingObject) {
+            self.curDrawingObject = [self createNewDrawingObject];
+        }
     }
     
-    NSArray *points = drawingObject.pointsArray;
+    NSArray *points = self.curDrawingObject.pointsArray;
     
     if (self.drawingObjectType == DRAWING_OBJECT_TYPE_FREE) {
-        [drawingObject addCGPoint:point];
+        [self.curDrawingObject addCGPoint:point];
     } else {
-        if (points.count==0 || points.count==1) {
-            [drawingObject addCGPoint:point];
-        } else {
-            [drawingObject removePoint:[points lastObject]];
-            [drawingObject addCGPoint:point];
+        if (points.count==0) {
+            [self.curDrawingObject addCGPoint:self.firstTouchPoint];
         }
+        else if (points.count==2) {
+            [self.curDrawingObject removePoint:[points lastObject]];
+        }
+        [self.curDrawingObject addCGPoint:point];
     }
     
     if (isEndTouch) {
@@ -74,6 +70,20 @@
         self.firstTouchPoint = CGPointZero;
         [[CoreDataSetup shared] saveContext];
     }
+}
+
+- (DrawingObject *)createNewDrawingObject
+{
+    DrawingObject *drawingObject = [CoreDataHelper createNewDrawingObjectInProject:self.project];
+
+    drawingObject.type = @(self.drawingObjectType);
+
+    //todo : grub all settings here and set to corresponding properties
+    drawingObject.fillColor = nil;
+    drawingObject.strokeColor = [UIColor blackColor];
+    drawingObject.lineWidth = @(3);
+    
+    return drawingObject;
 }
 
 @end

@@ -26,10 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.currentDrawInstrumentType = DRAW_INSTRUMENT_TYPE_DRAWING_OBJECT;
-    self.currentDrawObjectType = DRAWING_OBJECT_TYPE_FREE;
+    self.currentDrawObjectType = DRAWING_OBJECT_TYPE_OVAL;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemDone) target:self action:@selector(done)];
     
