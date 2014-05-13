@@ -99,7 +99,7 @@
 
 - (void)saveProjectPreviewImage
 {
-    UIGraphicsBeginImageContext(self.frame.size);
+    UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, [UIScreen mainScreen].scale);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

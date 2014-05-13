@@ -1,20 +1,21 @@
 //
-//  ProjectListFetchRCDelegate.m
+//  TableFetchRCDelegate.m
 //  DrawingApp
 //
-//  Created by Maxim on 5/8/14.
+//  Created by Maxim on 5/13/14.
 //  Copyright (c) 2014 Maxim Letushov. All rights reserved.
 //
 
-#import "ProjectListFetchRCDelegate.h"
+#import "TableFetchRCDelegate.h"
 
-@interface ProjectListFetchRCDelegate ()
+@interface TableFetchRCDelegate ()
 
-@property (nonatomic, weak) Project *lastChangedObject;
+@property (nonatomic, weak) id lastChangedObject;
 
 @end
 
-@implementation ProjectListFetchRCDelegate
+
+@implementation TableFetchRCDelegate
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
@@ -67,11 +68,12 @@
 {
     [self.tableView endUpdates];
     
-    NSUInteger index = [controller.fetchedObjects indexOfObject:self.lastChangedObject];
-    if (index != NSNotFound) {
-        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:(UITableViewScrollPositionMiddle)];
+    if (self.isNeedSelectRowForCorrespondingInsertedObject) {
+        NSUInteger index = [controller.fetchedObjects indexOfObject:self.lastChangedObject];
+        if (index != NSNotFound) {
+            [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:(UITableViewScrollPositionMiddle)];
+        }
     }
 }
-
 
 @end

@@ -29,5 +29,7 @@
 
 - (void)removePoint:(DrawingPoint *)point;
 
+- (NSString *)typeString;
+
 @end
 

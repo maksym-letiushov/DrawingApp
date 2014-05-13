@@ -82,4 +82,19 @@
     [self setPointsArray:points];
 }
 
+- (NSString *)typeString
+{
+    switch (self.type.integerValue) {
+        case DRAWING_OBJECT_TYPE_FREE:
+            return @"Free";
+        case DRAWING_OBJECT_TYPE_LINE:
+            return @"Line";
+        case DRAWING_OBJECT_TYPE_RECTANGLE:
+            return @"Rectangle";
+        case DRAWING_OBJECT_TYPE_OVAL:
+            return @"Oval";
+    }
+    return @"";
+}
+
 @end

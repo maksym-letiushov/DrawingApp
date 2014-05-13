@@ -8,13 +8,13 @@
 
 #import "ProjectListViewController.h"
 #import "ProjectDetailViewController.h"
-#import "ProjectListFetchRCDelegate.h"
+#import "TableFetchRCDelegate.h"
 
 @interface ProjectListViewController ()
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) ProjectDetailViewController *detailViewController;
-@property (strong, nonatomic) ProjectListFetchRCDelegate *projectListFetchRCDelegate;
+@property (strong, nonatomic) TableFetchRCDelegate *projectListFetchRCDelegate;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
@@ -77,7 +77,6 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
@@ -120,7 +119,8 @@
 {
     WeakSelf
     
-    self.projectListFetchRCDelegate = [ProjectListFetchRCDelegate new];
+    self.projectListFetchRCDelegate = [TableFetchRCDelegate new];
+    self.projectListFetchRCDelegate.needSelectRowForCorrespondingInsertedObject = YES;
     self.projectListFetchRCDelegate.tableView = self.tableView;
     
     [self.projectListFetchRCDelegate setUpdateCellCallback:^(UITableViewCell *cell, NSIndexPath *indexPath) {

@@ -12,6 +12,7 @@
 #import "DrawingObjectPointsMaster.h"
 #import "ProjectSettingsViewController.h"
 #import "ProjectSettings.h"
+#import "ProjectDrawingObjectsTableViewController.h"
 
 @interface ProjectDrawViewController () <NSFetchedResultsControllerDelegate>
 
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) DrawingObjectPointsMaster *drawingObjectPointsMaster;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
 @property (nonatomic, strong) ProjectSettingsViewController *projectSettingsViewController;
+@property (nonatomic, strong) ProjectDrawingObjectsTableViewController *projectDrawingObjectsViewController;
 
 @end
 
@@ -45,8 +47,10 @@
     [self setupDrawingObjectPointsMaster];
     [self setupFetchedResultController];
     [self setupProjectSettingsViewController];
+    [self setupProjectDrawingObjectsTableViewController];
     
     [self setSettingsHidden:NO];
+    [self setDrawingObjectsHidded:YES];
 }
 
 #pragma mark - Button's Actions
@@ -60,12 +64,14 @@
 
 - (void)showHideSettingsWithButton:(UIButton *)button
 {
+    [self setDrawingObjectsHidded:YES];
     [self setSettingsHidden:button.selected];
 }
 
 - (void)showHideObjectsWithButton:(UIButton *)button
 {
-    button.selected = !button.selected;
+    [self setSettingsHidden:YES];
+    [self setDrawingObjectsHidded:button.selected];
 }
 
 - (void)setSettingsHidden:(BOOL)hidden
@@ -73,6 +79,13 @@
     UIBarButtonItem *settingsItem = self.navigationItem.rightBarButtonItems[0];
     [(UIButton *)settingsItem.customView setSelected:!hidden];
     self.projectSettingsViewController.view.hidden = hidden;
+}
+
+- (void)setDrawingObjectsHidded:(BOOL)hidden
+{
+    UIBarButtonItem *settingsItem = self.navigationItem.rightBarButtonItems[1];
+    [(UIButton *)settingsItem.customView setSelected:!hidden];
+    self.projectDrawingObjectsViewController.view.hidden = hidden;
 }
 
 #pragma mark - Setup
@@ -131,13 +144,21 @@
 
     self.projectSettingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"projectSettingsStoryboardID"];
     self.projectSettingsViewController.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [self.projectSettingsViewController.view setFrame:CGRectMake(CGRectGetWidth(self.view.frame)-200, self.topLayoutGuide.length, 200, 400)];
+    self.projectSettingsViewController.view.frame = CGRectMake(CGRectGetWidth(self.view.frame)-200, self.topLayoutGuide.length, 200, 400);
     
     [self.projectSettingsViewController setDrawingObjectTypeDidUpdate:^{
         [weakSelf setupDrawingObjectPointsMaster];
     }];
     
     [self.view addSubview:self.projectSettingsViewController.view];
+}
+
+- (void)setupProjectDrawingObjectsTableViewController
+{
+    self.projectDrawingObjectsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"projectDrawingObjectsStoryboardID"];
+    self.projectDrawingObjectsViewController.project = self.project;
+    self.projectDrawingObjectsViewController.view.frame = CGRectMake(CGRectGetWidth(self.view.frame)-200, self.topLayoutGuide.length, 200, CGRectGetHeight(self.view.frame)-self.topLayoutGuide.length-self.bottomLayoutGuide.length);
+    [self.view addSubview:self.projectDrawingObjectsViewController.view];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
