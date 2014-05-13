@@ -44,6 +44,8 @@
 		C99985B9191A8774009E85D1 /* DrawingAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985B8191A8774009E85D1 /* DrawingAppTests.m */; };
 		C99985DF191A9DAD009E85D1 /* ProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985DB191A9DAD009E85D1 /* ProjectDetailViewController.m */; };
 		C99985E0191A9DAD009E85D1 /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985DE191A9DAD009E85D1 /* ProjectListViewController.m */; };
+		C9B6648B19221B7E00D952F5 /* PaletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B6648A19221B7E00D952F5 /* PaletteViewController.m */; };
+		C9B6648F1922295700D952F5 /* ColorInPaletteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B6648E1922295700D952F5 /* ColorInPaletteView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,10 @@
 		C99985DB191A9DAD009E85D1 /* ProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailViewController.m; sourceTree = "<group>"; };
 		C99985DD191A9DAD009E85D1 /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
 		C99985DE191A9DAD009E85D1 /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListViewController.m; sourceTree = "<group>"; };
+		C9B6648919221B7E00D952F5 /* PaletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaletteViewController.h; sourceTree = "<group>"; };
+		C9B6648A19221B7E00D952F5 /* PaletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaletteViewController.m; sourceTree = "<group>"; };
+		C9B6648D1922295700D952F5 /* ColorInPaletteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorInPaletteView.h; sourceTree = "<group>"; };
+		C9B6648E1922295700D952F5 /* ColorInPaletteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorInPaletteView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +213,7 @@
 		C9150A44191D404B00D9E5BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C9B6648C1922292400D952F5 /* ColorInPaletteView */,
 				C9150A49191D460300D9E5BB /* DrawingTouchesReceiverView */,
 				C9150A45191D40CC00D9E5BB /* ProjecPictureView */,
 			);
@@ -446,6 +453,7 @@
 		C99985D8191A9DAD009E85D1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C9B6648819221B5A00D952F5 /* Palette */,
 				C912823A1920D9240031838A /* ProjectSettings */,
 				C9150A40191D315300D9E5BB /* MainSplit */,
 				C9150A3B191D2CE000D9E5BB /* ProjectDraw */,
@@ -472,6 +480,24 @@
 				C99985DE191A9DAD009E85D1 /* ProjectListViewController.m */,
 			);
 			path = ProjectList;
+			sourceTree = "<group>";
+		};
+		C9B6648819221B5A00D952F5 /* Palette */ = {
+			isa = PBXGroup;
+			children = (
+				C9B6648919221B7E00D952F5 /* PaletteViewController.h */,
+				C9B6648A19221B7E00D952F5 /* PaletteViewController.m */,
+			);
+			path = Palette;
+			sourceTree = "<group>";
+		};
+		C9B6648C1922292400D952F5 /* ColorInPaletteView */ = {
+			isa = PBXGroup;
+			children = (
+				C9B6648D1922295700D952F5 /* ColorInPaletteView.h */,
+				C9B6648E1922295700D952F5 /* ColorInPaletteView.m */,
+			);
+			path = ColorInPaletteView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -574,6 +600,7 @@
 				C9150A50191D4AA700D9E5BB /* DrawingObjectPointsMaster.m in Sources */,
 				C9150A4C191D468700D9E5BB /* DrawingTouchesReceiverView.m in Sources */,
 				C93AF0AA191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m in Sources */,
+				C9B6648F1922295700D952F5 /* ColorInPaletteView.m in Sources */,
 				C93D264A191A9FE7007A0FC6 /* Project.m in Sources */,
 				C93D2649191A9FE0007A0FC6 /* DrawingObject.m in Sources */,
 				C912823D1920D9430031838A /* ProjectSettingsViewController.m in Sources */,
@@ -595,6 +622,7 @@
 				C94BE0B3191B93F700D574E8 /* CoreDataSetup.m in Sources */,
 				C91282351920C40A0031838A /* AttributedStringMaster.m in Sources */,
 				C93AF09F191B708400A60A82 /* DrawingPoint.m in Sources */,
+				C9B6648B19221B7E00D952F5 /* PaletteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

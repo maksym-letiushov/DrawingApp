@@ -10,8 +10,10 @@
 #import "ProjectSettings.h"
 #import "ProjectSettings.h"
 #import "LineWidthPickerDataSource.h"
+#import "PaletteViewController.h"
+#import "ColorInPaletteView.h"
 
-@interface ProjectSettingsViewController ()
+@interface ProjectSettingsViewController () <UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) LineWidthPickerDataSource *lineWidthPickerDataSource;
 
@@ -19,9 +21,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *lineButton;
 @property (weak, nonatomic) IBOutlet UIButton *ovalButton;
 @property (weak, nonatomic) IBOutlet UIButton *rectButton;
-@property (weak, nonatomic) IBOutlet UIView *strokeColorView;
-@property (weak, nonatomic) IBOutlet UIView *fillColorView;
+@property (weak, nonatomic) IBOutlet ColorInPaletteView *strokeColorView;
+@property (weak, nonatomic) IBOutlet ColorInPaletteView *fillColorView;
 @property (weak, nonatomic) IBOutlet UIPickerView *lineWidthPickerView;
+@property (nonatomic, strong) UIPopoverController *popover;
 
 - (IBAction)selectDrawingObjectTypeWithButton:(UIButton *)sender;
 
@@ -35,10 +38,29 @@
     self.lineButton.tag = DRAWING_OBJECT_TYPE_LINE;
     self.ovalButton.tag = DRAWING_OBJECT_TYPE_OVAL;
     self.rectButton.tag = DRAWING_OBJECT_TYPE_RECTANGLE;
-    
+
     [self selectDrawingObjectType:[ProjectSettings shared].drawObjectType];
-    
     [self setupLineWidthPickerDataSource];
+
+    
+    self.strokeColorView.fillColor = [ProjectSettings shared].strokeColor;
+    self.fillColorView.fillColor = [ProjectSettings shared].fillColor;
+    
+    WeakSelf;
+    
+    self.strokeColorView.Tap = ^{
+        [weakSelf showPopoverWithCompletionHandler:^(UIColor *color) {
+            weakSelf.strokeColorView.fillColor = color;
+            [ProjectSettings shared].strokeColor = color;
+        } fromRect:self.strokeColorView.frame];
+    };
+    
+    self.fillColorView.Tap = ^{
+        [weakSelf showPopoverWithCompletionHandler:^(UIColor *color) {
+            weakSelf.fillColorView.fillColor = color;
+            [ProjectSettings shared].fillColor = color;
+        } fromRect:self.fillColorView.frame];
+    };
 }
 
 - (void)viewDidLoad
@@ -88,6 +110,34 @@
     self.DrawingObjectTypeDidUpdate();
 }
 
-#pragma mark - UIPickerViewDataSource
+- (void)showPopoverWithCompletionHandler:(void(^)(UIColor *color))completionHandler fromRect:(CGRect)rect
+{
+    WeakSelf;
+    PaletteViewController *palettVC = [self.storyboard instantiateViewControllerWithIdentifier:@"paletteStoryboardID"];
+    palettVC.UpdateColor = ^(UIColor *color){
+        if (completionHandler) {
+            completionHandler(color);
+        }
+        [weakSelf.popover dismissPopoverAnimated:YES];
+        weakSelf.popover = nil;
+    };
+    
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:palettVC];
+    popover.delegate = self;
+    popover.popoverContentSize = [PaletteViewController prefferedSize];
+    
+    [popover presentPopoverFromRect:self.strokeColorView.frame inView:self.view permittedArrowDirections:(UIPopoverArrowDirectionRight) animated:YES];
+    
+    self.popover = popover;
+}
+
+
+#pragma mark - UIPopoverControllerDelegate
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    self.popover = nil;
+}
+
 
 @end

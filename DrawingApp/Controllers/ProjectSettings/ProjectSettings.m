@@ -29,8 +29,8 @@ static ProjectSettings *shared = nil;
         self.drawInstrumentType = DRAW_INSTRUMENT_TYPE_DRAWING_OBJECT;
         self.drawObjectType = DRAWING_OBJECT_TYPE_FREE;
         self.lineWidth = 1;
-        self.strokeColor = [UIColor greenColor];
-        self.fillColor = [UIColor grayColor];
+        self.strokeColor = [UIColor blackColor];
+        self.fillColor = [UIColor clearColor];
     }
     return self;
 }
