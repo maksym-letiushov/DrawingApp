@@ -70,6 +70,17 @@
     [self setupUI];
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    self.view.layer.masksToBounds = NO;
+    self.view.layer.shadowColor = [UIColor orangeColor].CGColor;
+    self.view.layer.shadowOpacity = 0.5;
+    self.view.layer.shadowRadius = 5;
+    self.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.view.bounds].CGPath;
+}
+
 - (void)setupLineWidthPickerDataSource
 {
     self.lineWidthPickerDataSource = [[LineWidthPickerDataSource alloc] initWithPickerView:self.lineWidthPickerView];

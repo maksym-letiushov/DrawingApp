@@ -29,7 +29,7 @@
     NSShadow *shadow = [[NSShadow alloc] init];
     [shadow setShadowColor:[UIColor orangeColor]];
     [shadow setShadowBlurRadius:2.0];
-    [shadow setShadowOffset:CGSizeMake(2, 2)];
+    [shadow setShadowOffset:CGSizeMake(-2, 2)];
 
     [attrString addAttribute:NSShadowAttributeName
                              value:shadow
