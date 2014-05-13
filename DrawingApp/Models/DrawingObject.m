@@ -18,8 +18,6 @@
 @dynamic strokeColorData;
 @dynamic fillColorData;
 @dynamic zIndex;
-@dynamic hasStroke;
-@dynamic hasFill;
 @dynamic project;
 
 @end

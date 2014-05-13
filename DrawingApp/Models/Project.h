@@ -16,7 +16,6 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * width;
 @property (nonatomic, retain) NSNumber * height;
-@property (nonatomic, retain) NSString * imageName;
 @property (nonatomic, retain) NSNumber * lastZIndex;
 @property (nonatomic, retain) NSDate * dateCreated;
 @property (nonatomic, retain) NSSet *drawingObjects;

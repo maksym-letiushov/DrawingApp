@@ -19,8 +19,6 @@
 @property (nonatomic, retain) NSData * strokeColorData;
 @property (nonatomic, retain) NSData * fillColorData;
 @property (nonatomic, retain) NSNumber * zIndex;
-@property (nonatomic, retain) NSNumber * hasStroke;
-@property (nonatomic, retain) NSNumber * hasFill;
 @property (nonatomic, retain) Project *project;
 
 @end

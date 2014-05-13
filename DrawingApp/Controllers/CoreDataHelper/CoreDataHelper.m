@@ -47,7 +47,6 @@
 
 + (DrawingObject *)createNewDrawingObjectInProject:(Project *)project
 {
-    NSLog(@"%s",__FUNCTION__);
     DrawingObject *drawingObject = [NSEntityDescription insertNewObjectForEntityForName:[DrawingObject entityName]
                                                                    inManagedObjectContext:[CoreDataSetup shared].managedObjectContext];
     
@@ -85,8 +84,7 @@
     
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:[DrawingObject keyZIndex] ascending:YES]];
     
-//    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"project.dateCreated",project.dateCreated];
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"project",project];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"project.dateCreated",project.dateCreated];
     
 //    NSArray *results = [[CoreDataSetup shared].managedObjectContext executeFetchRequest:fetchRequest error:nil];
     

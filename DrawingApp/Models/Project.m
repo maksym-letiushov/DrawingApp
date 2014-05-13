@@ -15,7 +15,6 @@
 @dynamic name;
 @dynamic width;
 @dynamic height;
-@dynamic imageName;
 @dynamic lastZIndex;
 @dynamic dateCreated;
 @dynamic drawingObjects;
