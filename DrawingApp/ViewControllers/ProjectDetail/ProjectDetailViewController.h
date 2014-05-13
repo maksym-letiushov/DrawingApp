@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) Project *project;
 
+- (void)editProject;
+
 @end

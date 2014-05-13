@@ -49,8 +49,10 @@
 - (void)insertNewObject:(id)sender
 {
     Project *project = [CoreDataHelper createProjectWithWidth:300 height:300];
-    
     [[CoreDataSetup shared] saveContext];
+    
+    self.detailViewController.project = project;
+    [self.detailViewController editProject];
 }
 
 #pragma mark - Table View
