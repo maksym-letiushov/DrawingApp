@@ -10,6 +10,8 @@
 #import "ProjectPictureView.h"
 #import "DrawingTouchesReceiverView.h"
 #import "DrawingObjectPointsMaster.h"
+#import "ProjectSettingsViewController.h"
+#import "ProjectSettings.h"
 
 @interface ProjectDrawViewController () <NSFetchedResultsControllerDelegate>
 
@@ -17,9 +19,9 @@
 @property (nonatomic, strong) DrawingTouchesReceiverView *drawingTouchesReceiverView;
 @property (nonatomic, strong) DrawingObjectPointsMaster *drawingObjectPointsMaster;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
+@property (nonatomic, strong) ProjectSettingsViewController *projectSettingsViewController;
 
 @end
-
 
 @implementation ProjectDrawViewController
 
@@ -27,42 +29,92 @@
 {
     [super viewDidLoad];
     
-    self.currentDrawInstrumentType = DRAW_INSTRUMENT_TYPE_DRAWING_OBJECT;
-    self.currentDrawObjectType = DRAWING_OBJECT_TYPE_OVAL;
+    [self setupNavigationItem];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemDone) target:self action:@selector(done)];
+    if (self.projectPictureView) {
+        return;
+    }
     
     [self setupProjectPictureView];
     [self setupDrawingTouchesReceiverView];
     [self setupDrawingObjectPointsMaster];
     [self setupFetchedResultController];
+    [self setupProjectSettingsViewController];
+    
+    [self setSettingsHidden:NO];
 }
+
+#pragma mark - Button's Actions
 
 - (void)done
 {
+    [self.projectPictureView saveProjectPreviewImage];
+    
     self.EditingDone();
+}
+
+- (void)showHideSettingsWithButton:(UIButton *)button
+{
+    [self setSettingsHidden:button.selected];
+}
+
+- (void)showHideObjectsWithButton:(UIButton *)button
+{
+    button.selected = !button.selected;
+}
+
+- (void)setSettingsHidden:(BOOL)hidden
+{
+    UIBarButtonItem *settingsItem = self.navigationItem.rightBarButtonItems[0];
+    [(UIButton *)settingsItem.customView setSelected:!hidden];
+    self.projectSettingsViewController.view.hidden = hidden;
 }
 
 #pragma mark - Setup
 
+- (void)setupNavigationItem
+{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemDone)
+                                                                                          target:self
+                                                                                          action:@selector(done)];
+    
+    UIBarButtonItem *settingsBarButtonItem = [ButtonsHelper twoStateBarButtonItemWithTitle:@"Settings"
+                                                                                    target:self
+                                                                                    action:@selector(showHideSettingsWithButton:)];
+    
+    UIBarButtonItem *objectsBarButtonItem = [ButtonsHelper twoStateBarButtonItemWithTitle:@"Objects"
+                                                                                   target:self
+                                                                                   action:@selector(showHideObjectsWithButton:)];
+    
+    self.navigationItem.rightBarButtonItems = @[settingsBarButtonItem, objectsBarButtonItem];
+}
+
 - (void)setupProjectPictureView
 {
     self.projectPictureView = [[ProjectPictureView alloc] initWithFrame:self.view.bounds];
+    self.projectPictureView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.projectPictureView.project = self.project;
-    
     [self.view addSubview:self.projectPictureView];
 }
 
 - (void)setupDrawingTouchesReceiverView
 {
     self.drawingTouchesReceiverView = [[DrawingTouchesReceiverView alloc] initWithFrame:self.view.bounds];
+    self.drawingTouchesReceiverView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.drawingTouchesReceiverView.drawingGestureReceiver = nil;
     [self.view addSubview:self.drawingTouchesReceiverView];
 }
 
 - (void)setupDrawingObjectPointsMaster
 {
-    self.drawingObjectPointsMaster = [DrawingObjectPointsMaster drawingObjectPointsMasterForObjectType:self.currentDrawObjectType inProject:self.project];
+    enum DRAWING_OBJECT_TYPE type = [ProjectSettings shared].drawObjectType;
+    
+    self.drawingObjectPointsMaster = [DrawingObjectPointsMaster drawingObjectPointsMasterForObjectType:type inProject:self.project];
     self.drawingTouchesReceiverView.drawingGestureReceiver = self.drawingObjectPointsMaster;
 }
 
@@ -73,25 +125,27 @@
     [self.fetchedResultController performFetch:nil];
 }
 
-#pragma mark - NSFetchedResultsControllerDelegate
-
--(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
+- (void)setupProjectSettingsViewController
 {
-    NSLog(@"%s",__FUNCTION__);
+    WeakSelf;
+
+    self.projectSettingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"projectSettingsStoryboardID"];
+    self.projectSettingsViewController.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+    [self.projectSettingsViewController.view setFrame:CGRectMake(CGRectGetWidth(self.view.frame)-200, self.topLayoutGuide.length, 200, 400)];
+    
+    [self.projectSettingsViewController setDrawingObjectTypeDidUpdate:^{
+        [weakSelf setupDrawingObjectPointsMaster];
+    }];
+    
+    [self.view addSubview:self.projectSettingsViewController.view];
 }
+
+#pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    NSLog(@"%s",__FUNCTION__);
     [self.projectPictureView setNeedsDisplay];
 }
-
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//    
-//    [self.navigationController setNavigationBarHidden:NO];
-//}
 
 /*
 #pragma mark - Navigation

@@ -12,6 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
-- (void)showDetailsOfProject:(Project *)project;
+@property (strong, nonatomic) Project *project;
 
 @end

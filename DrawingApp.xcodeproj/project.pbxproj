@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C91282351920C40A0031838A /* AttributedStringMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = C91282341920C40A0031838A /* AttributedStringMaster.m */; };
+		C91282391920C8A10031838A /* ButtonsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C91282381920C8A10031838A /* ButtonsHelper.m */; };
+		C912823D1920D9430031838A /* ProjectSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C912823C1920D9430031838A /* ProjectSettingsViewController.m */; };
+		C91282411920DB620031838A /* ProjectSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C91282401920DB620031838A /* ProjectSettings.m */; };
 		C9150A3E191D2CF700D9E5BB /* ProjectDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A3D191D2CF700D9E5BB /* ProjectDrawViewController.m */; };
 		C9150A43191D315F00D9E5BB /* MainSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A42191D315F00D9E5BB /* MainSplitViewController.m */; };
 		C9150A48191D40F900D9E5BB /* ProjectPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A47191D40F900D9E5BB /* ProjectPictureView.m */; };
 		C9150A4C191D468700D9E5BB /* DrawingTouchesReceiverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A4B191D468700D9E5BB /* DrawingTouchesReceiverView.m */; };
 		C9150A50191D4AA700D9E5BB /* DrawingObjectPointsMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A4F191D4AA700D9E5BB /* DrawingObjectPointsMaster.m */; };
+		C92CB421192141D7006CAC2D /* LineWidthPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C92CB420192141D7006CAC2D /* LineWidthPickerDataSource.m */; };
 		C93AF09F191B708400A60A82 /* DrawingPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AF09E191B708400A60A82 /* DrawingPoint.m */; };
 		C93AF0A3191B70DF00A60A82 /* RGBAColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AF0A2191B70DF00A60A82 /* RGBAColor.m */; };
 		C93AF0A7191B72D800A60A82 /* Project+ProjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AF0A6191B72D800A60A82 /* Project+ProjectAdditions.m */; };
@@ -52,6 +57,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C91282331920C40A0031838A /* AttributedStringMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedStringMaster.h; sourceTree = "<group>"; };
+		C91282341920C40A0031838A /* AttributedStringMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedStringMaster.m; sourceTree = "<group>"; };
+		C91282371920C8A10031838A /* ButtonsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsHelper.h; sourceTree = "<group>"; };
+		C91282381920C8A10031838A /* ButtonsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsHelper.m; sourceTree = "<group>"; };
+		C912823B1920D9430031838A /* ProjectSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSettingsViewController.h; sourceTree = "<group>"; };
+		C912823C1920D9430031838A /* ProjectSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSettingsViewController.m; sourceTree = "<group>"; };
+		C912823F1920DB620031838A /* ProjectSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSettings.h; sourceTree = "<group>"; };
+		C91282401920DB620031838A /* ProjectSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSettings.m; sourceTree = "<group>"; };
 		C9150A3C191D2CF700D9E5BB /* ProjectDrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDrawViewController.h; sourceTree = "<group>"; };
 		C9150A3D191D2CF700D9E5BB /* ProjectDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDrawViewController.m; sourceTree = "<group>"; };
 		C9150A41191D315F00D9E5BB /* MainSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSplitViewController.h; sourceTree = "<group>"; };
@@ -64,6 +77,8 @@
 		C9150A4F191D4AA700D9E5BB /* DrawingObjectPointsMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingObjectPointsMaster.m; sourceTree = "<group>"; };
 		C9150A51191D4B7000D9E5BB /* DrawDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawDefines.h; sourceTree = "<group>"; };
 		C9150A53191D4D2800D9E5BB /* DrawingGestureReceiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawingGestureReceiver.h; sourceTree = "<group>"; };
+		C92CB41F192141D7006CAC2D /* LineWidthPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineWidthPickerDataSource.h; sourceTree = "<group>"; };
+		C92CB420192141D7006CAC2D /* LineWidthPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineWidthPickerDataSource.m; sourceTree = "<group>"; };
 		C93642B7191FB97100F5BD5B /* DrawingApp 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DrawingApp 2.xcdatamodel"; sourceTree = "<group>"; };
 		C93AF09D191B708400A60A82 /* DrawingPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingPoint.h; sourceTree = "<group>"; };
 		C93AF09E191B708400A60A82 /* DrawingPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingPoint.m; sourceTree = "<group>"; };
@@ -134,6 +149,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C91282321920C3B70031838A /* AttributedStringMaster */ = {
+			isa = PBXGroup;
+			children = (
+				C91282331920C40A0031838A /* AttributedStringMaster.h */,
+				C91282341920C40A0031838A /* AttributedStringMaster.m */,
+			);
+			path = AttributedStringMaster;
+			sourceTree = "<group>";
+		};
+		C91282361920C8820031838A /* ButtonsHelper */ = {
+			isa = PBXGroup;
+			children = (
+				C91282371920C8A10031838A /* ButtonsHelper.h */,
+				C91282381920C8A10031838A /* ButtonsHelper.m */,
+			);
+			path = ButtonsHelper;
+			sourceTree = "<group>";
+		};
+		C912823A1920D9240031838A /* ProjectSettings */ = {
+			isa = PBXGroup;
+			children = (
+				C92CB41E192141CD006CAC2D /* LineWidthPickerDataSource */,
+				C912823B1920D9430031838A /* ProjectSettingsViewController.h */,
+				C912823C1920D9430031838A /* ProjectSettingsViewController.m */,
+			);
+			path = ProjectSettings;
+			sourceTree = "<group>";
+		};
+		C912823E1920DB4C0031838A /* ProjectSettings */ = {
+			isa = PBXGroup;
+			children = (
+				C912823F1920DB620031838A /* ProjectSettings.h */,
+				C91282401920DB620031838A /* ProjectSettings.m */,
+			);
+			path = ProjectSettings;
+			sourceTree = "<group>";
+		};
 		C9150A3B191D2CE000D9E5BB /* ProjectDraw */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +248,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		C92CB41E192141CD006CAC2D /* LineWidthPickerDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				C92CB41F192141D7006CAC2D /* LineWidthPickerDataSource.h */,
+				C92CB420192141D7006CAC2D /* LineWidthPickerDataSource.m */,
+			);
+			path = LineWidthPickerDataSource;
+			sourceTree = "<group>";
+		};
 		C93AF09C191B708400A60A82 /* DrawingPoint */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +296,9 @@
 		C93D264B191AA553007A0FC6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C912823E1920DB4C0031838A /* ProjectSettings */,
+				C91282361920C8820031838A /* ButtonsHelper */,
+				C91282321920C3B70031838A /* AttributedStringMaster */,
 				C9150A4D191D4A2D00D9E5BB /* DrawingObjectPointsMaster */,
 				C94BE0B4191B93F700D574E8 /* CoreDataHelper */,
 				C94BE0B0191B93F700D574E8 /* CoreDataSetup */,
@@ -382,6 +446,7 @@
 		C99985D8191A9DAD009E85D1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C912823A1920D9240031838A /* ProjectSettings */,
 				C9150A40191D315300D9E5BB /* MainSplit */,
 				C9150A3B191D2CE000D9E5BB /* ProjectDraw */,
 				C99985DC191A9DAD009E85D1 /* ProjectList */,
@@ -511,9 +576,13 @@
 				C93AF0AA191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m in Sources */,
 				C93D264A191A9FE7007A0FC6 /* Project.m in Sources */,
 				C93D2649191A9FE0007A0FC6 /* DrawingObject.m in Sources */,
+				C912823D1920D9430031838A /* ProjectSettingsViewController.m in Sources */,
 				C9998597191A8774009E85D1 /* AppDelegate.m in Sources */,
+				C92CB421192141D7006CAC2D /* LineWidthPickerDataSource.m in Sources */,
+				C91282411920DB620031838A /* ProjectSettings.m in Sources */,
 				C9150A43191D315F00D9E5BB /* MainSplitViewController.m in Sources */,
 				C97789A5191BDAC000D8C7C8 /* ProjectListFetchRCDelegate.m in Sources */,
+				C91282391920C8A10031838A /* ButtonsHelper.m in Sources */,
 				C94BE0B7191B93F700D574E8 /* CoreDataHelper.m in Sources */,
 				C99985DF191A9DAD009E85D1 /* ProjectDetailViewController.m in Sources */,
 				C93AF0A3191B70DF00A60A82 /* RGBAColor.m in Sources */,
@@ -524,6 +593,7 @@
 				C93AF0A7191B72D800A60A82 /* Project+ProjectAdditions.m in Sources */,
 				C9150A3E191D2CF700D9E5BB /* ProjectDrawViewController.m in Sources */,
 				C94BE0B3191B93F700D574E8 /* CoreDataSetup.m in Sources */,
+				C91282351920C40A0031838A /* AttributedStringMaster.m in Sources */,
 				C93AF09F191B708400A60A82 /* DrawingPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

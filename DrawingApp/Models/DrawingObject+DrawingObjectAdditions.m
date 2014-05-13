@@ -70,8 +70,6 @@
 
 - (void)addCGPoint:(CGPoint)cgPoint
 {
-    NSLog(@"x=%f y=%f %s",cgPoint.x, cgPoint.y, __FUNCTION__);
-    
     NSMutableArray *points = [NSMutableArray arrayWithArray:[self pointsArray]];
     [points addObject:[DrawingPoint pointFromCGPoint:cgPoint]];
     [self setPointsArray:points];

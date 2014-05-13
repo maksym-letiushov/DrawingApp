@@ -14,7 +14,4 @@
 
 @property (nonatomic, copy) void(^EditingDone)(void);
 
-@property (nonatomic, assign) enum DRAW_INSTRUMENT_TYPE currentDrawInstrumentType;
-@property (nonatomic, assign) enum DRAWING_OBJECT_TYPE currentDrawObjectType;
-
 @end

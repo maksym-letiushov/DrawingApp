@@ -83,6 +83,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        if (project == self.detailViewController.project) {
+            self.detailViewController.project = nil;
+        }
         [CoreDataHelper deleteProject:project];
         [[CoreDataSetup shared] saveContext];
     }
@@ -97,7 +100,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Project *project = (Project *)[[self fetchedResultsController] objectAtIndexPath:indexPath];
-    [self.detailViewController showDetailsOfProject:project];
+    self.detailViewController.project = project;
 }
 
 #pragma mark - Fetched results controller

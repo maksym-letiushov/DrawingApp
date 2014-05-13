@@ -23,5 +23,7 @@
     #import "CoreDataSetup.h"
 
     #import "DrawDefines.h"
+    #import "AttributedStringMaster.h"
+    #import "ButtonsHelper.h"
 
 #endif

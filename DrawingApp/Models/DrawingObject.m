@@ -27,7 +27,7 @@
     [super awakeFromInsert];
     
     self.pointsData = nil;
-    self.lineWidth = @(LINE_WIDTH_MIN);
+    self.lineWidth = @(MIN_LINE_WIDTH);
     self.strokeColorData = nil;
     self.fillColorData = nil;
     self.zIndex = @0;

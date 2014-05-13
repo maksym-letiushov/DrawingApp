@@ -42,4 +42,23 @@
     value.zIndex = self.lastZIndex;
 }
 
+- (NSURL *)imageURL
+{
+    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%f.png",[[CoreDataSetup shared] applicationDocumentsDirectory].path, [self.dateCreated timeIntervalSince1970]]];
+    return url;
+}
+
+- (UIImage *)image
+{
+    NSString *path = self.imageURL.path;
+    
+    BOOL isExists = [[NSFileManager defaultManager] fileExistsAtPath:path];
+    if (!isExists) {
+        return nil;
+    }
+    
+    return [UIImage imageWithData:[NSData dataWithContentsOfFile:path]];
+}
+
+
 @end

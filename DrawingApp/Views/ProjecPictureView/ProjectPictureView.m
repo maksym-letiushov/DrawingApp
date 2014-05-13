@@ -23,8 +23,6 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    //NSLog(@"%s",__FUNCTION__);
-    
     if (!self.project) {
         //todo fill background
         return ;
@@ -40,6 +38,10 @@
 
 - (void)drawObject:(DrawingObject *)drawingObject
 {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSaveGState(context);
+    
     NSArray *points = [drawingObject pointsArray];
     if (!points.count) {
         return ;
@@ -75,6 +77,8 @@
     
     [bezierPath fill];
     [bezierPath stroke];
+    
+    CGContextRestoreGState(context);
 }
 
 - (CGRect)rectForOvalOrRectangleForDrawingObject:(DrawingObject *)drawingObject
@@ -91,6 +95,17 @@
     rect.size.height = ABS(firstPoint.y - lastPoint.y);
     
     return rect;
+}
+
+- (void)saveProjectPreviewImage
+{
+    UIGraphicsBeginImageContext(self.frame.size);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    NSData *imageData = UIImagePNGRepresentation(image);
+    [imageData writeToURL:self.project.imageURL atomically:YES];
 }
 
 @end

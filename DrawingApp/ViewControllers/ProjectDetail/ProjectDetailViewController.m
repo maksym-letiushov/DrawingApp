@@ -12,7 +12,6 @@
 @interface ProjectDetailViewController ()
 
 //@property (strong, nonatomic) UIPopoverController *masterPopoverController;
-@property (strong, nonatomic) Project *project;
 @property (strong, nonatomic) UINavigationController *projectDrawNC;
 
 @property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
@@ -21,7 +20,7 @@
 
 @implementation ProjectDetailViewController
 
-- (void)showDetailsOfProject:(Project *)project
+- (void)setProject:(Project *)project
 {
     _project = project;
     
@@ -34,9 +33,7 @@
         return ;
     }
     
-    if (self.project.imageName.length) {
-        self.previewImageView.image = [UIImage imageWithContentsOfFile:self.project.imageName];
-    }
+    self.previewImageView.image = self.project.image;
     
     if (self.project) {
         UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemEdit) target:self action:@selector(editProject)];
@@ -67,6 +64,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated

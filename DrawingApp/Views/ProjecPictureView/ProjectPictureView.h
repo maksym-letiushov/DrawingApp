@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) Project *project;
 
+- (void)saveProjectPreviewImage;
+
 @end

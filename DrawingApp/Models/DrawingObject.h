@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-#define LINE_WIDTH_MIN 1
-#define LINE_WIDTH_MAX 10
-
 @class Project;
 
 @interface DrawingObject : NSManagedObject

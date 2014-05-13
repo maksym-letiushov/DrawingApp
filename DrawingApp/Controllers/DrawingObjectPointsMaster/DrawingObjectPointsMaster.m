@@ -7,6 +7,7 @@
 //
 
 #import "DrawingObjectPointsMaster.h"
+#import "ProjectSettings.h"
 
 @interface DrawingObjectPointsMaster ()
 
@@ -78,10 +79,9 @@
 
     drawingObject.type = @(self.drawingObjectType);
 
-    //todo : grub all settings here and set to corresponding properties
-    drawingObject.fillColor = nil;
-    drawingObject.strokeColor = [UIColor blackColor];
-    drawingObject.lineWidth = @(3);
+    drawingObject.fillColor = [ProjectSettings shared].fillColor;
+    drawingObject.strokeColor = [ProjectSettings shared].strokeColor;
+    drawingObject.lineWidth = @([ProjectSettings shared].lineWidth);
     
     return drawingObject;
 }

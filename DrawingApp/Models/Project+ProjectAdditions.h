@@ -20,4 +20,8 @@
 
 - (void)addDrawingObjectWithIncrementedZIndex:(DrawingObject *)value;
 
+- (NSURL *)imageURL;
+
+- (UIImage *)image;
+
 @end
