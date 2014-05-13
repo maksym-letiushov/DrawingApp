@@ -109,7 +109,11 @@
 
 - (void)setupProjectPictureView
 {
-    self.projectPictureView = [[ProjectPictureView alloc] initWithFrame:self.view.bounds];
+    CGRect rect = self.view.bounds;
+    rect.origin.y += self.topLayoutGuide.length;
+    rect.size.height -= (self.topLayoutGuide.length + self.bottomLayoutGuide.length);
+    
+    self.projectPictureView = [[ProjectPictureView alloc] initWithFrame:rect];
     self.projectPictureView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.projectPictureView.project = self.project;
     [self.view addSubview:self.projectPictureView];
@@ -117,7 +121,7 @@
 
 - (void)setupDrawingTouchesReceiverView
 {
-    self.drawingTouchesReceiverView = [[DrawingTouchesReceiverView alloc] initWithFrame:self.view.bounds];
+    self.drawingTouchesReceiverView = [[DrawingTouchesReceiverView alloc] initWithFrame:self.projectPictureView.frame];
     self.drawingTouchesReceiverView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.drawingTouchesReceiverView.drawingGestureReceiver = nil;
     [self.view addSubview:self.drawingTouchesReceiverView];

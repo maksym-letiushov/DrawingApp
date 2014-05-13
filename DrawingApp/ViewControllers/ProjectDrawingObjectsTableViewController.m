@@ -50,11 +50,13 @@
 
 - (void)setupProjectObjectsFetchRCDelegate
 {
+    WeakSelf;
+    
     self.projectObjectsFetchRCDelegate = [TableFetchRCDelegate new];
     self.projectObjectsFetchRCDelegate.needSelectRowForCorrespondingInsertedObject = YES;
     self.projectObjectsFetchRCDelegate.tableView = self.tableView;
     [self.projectObjectsFetchRCDelegate setUpdateCellCallback:^(UITableViewCell *cell, NSIndexPath *indexPath) {
-        
+        [weakSelf configureCell:cell atIndexPath:indexPath];
     }];
 }
 
