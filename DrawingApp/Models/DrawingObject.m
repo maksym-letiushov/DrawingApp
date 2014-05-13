@@ -22,17 +22,4 @@
 @dynamic hasFill;
 @dynamic project;
 
-- (void)awakeFromInsert
-{
-    [super awakeFromInsert];
-    
-    self.pointsData = nil;
-    self.lineWidth = @(MIN_LINE_WIDTH);
-    self.strokeColorData = nil;
-    self.fillColorData = nil;
-    self.zIndex = @0;
-    self.hasStroke = @YES;
-    self.hasFill = @NO;
-}
-
 @end

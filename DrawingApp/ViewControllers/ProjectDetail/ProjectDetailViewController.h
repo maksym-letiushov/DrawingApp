@@ -10,8 +10,6 @@
 
 @interface ProjectDetailViewController : UIViewController <UISplitViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
-
 @property (strong, nonatomic) Project *project;
 
 @end

@@ -20,16 +20,4 @@
 @dynamic dateCreated;
 @dynamic drawingObjects;
 
-- (void)awakeFromInsert
-{
-    [super awakeFromInsert];
-    
-    self.dateCreated = [NSDate date];
-    self.lastZIndex = @0;
-    self.height = @100;
-    self.width = @100;
-    self.name = [NSString stringWithFormat:@"Project"];
-    self.imageName = nil;
-}
-
 @end
