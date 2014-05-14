@@ -12,7 +12,6 @@
 		C912823D1920D9430031838A /* ProjectSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C912823C1920D9430031838A /* ProjectSettingsViewController.m */; };
 		C91282411920DB620031838A /* ProjectSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C91282401920DB620031838A /* ProjectSettings.m */; };
 		C9140D2F1922B40A00E18B08 /* ProjectDrawingObjectsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9140D2E1922B40A00E18B08 /* ProjectDrawingObjectsTableViewController.m */; };
-		C9140D331922B73D00E18B08 /* TableFetchRCDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9140D321922B73D00E18B08 /* TableFetchRCDelegate.m */; };
 		C9150A3E191D2CF700D9E5BB /* ProjectDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A3D191D2CF700D9E5BB /* ProjectDrawViewController.m */; };
 		C9150A43191D315F00D9E5BB /* MainSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A42191D315F00D9E5BB /* MainSplitViewController.m */; };
 		C9150A48191D40F900D9E5BB /* ProjectPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9150A47191D40F900D9E5BB /* ProjectPictureView.m */; };
@@ -27,6 +26,7 @@
 		C93D264A191A9FE7007A0FC6 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985CC191A9A29009E85D1 /* Project.m */; };
 		C94BE0B3191B93F700D574E8 /* CoreDataSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = C94BE0B2191B93F700D574E8 /* CoreDataSetup.m */; };
 		C94BE0B7191B93F700D574E8 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C94BE0B6191B93F700D574E8 /* CoreDataHelper.m */; };
+		C97A135619239C640034A23D /* CoreDataTableProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C97A135519239C640034A23D /* CoreDataTableProvider.m */; };
 		C9998585191A8774009E85D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9998584191A8774009E85D1 /* Foundation.framework */; };
 		C9998587191A8774009E85D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9998586191A8774009E85D1 /* CoreGraphics.framework */; };
 		C9998589191A8774009E85D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9998588191A8774009E85D1 /* UIKit.framework */; };
@@ -70,8 +70,6 @@
 		C91282401920DB620031838A /* ProjectSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSettings.m; sourceTree = "<group>"; };
 		C9140D2D1922B40A00E18B08 /* ProjectDrawingObjectsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDrawingObjectsTableViewController.h; sourceTree = "<group>"; };
 		C9140D2E1922B40A00E18B08 /* ProjectDrawingObjectsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDrawingObjectsTableViewController.m; sourceTree = "<group>"; };
-		C9140D311922B73D00E18B08 /* TableFetchRCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableFetchRCDelegate.h; sourceTree = "<group>"; };
-		C9140D321922B73D00E18B08 /* TableFetchRCDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableFetchRCDelegate.m; sourceTree = "<group>"; };
 		C9150A3C191D2CF700D9E5BB /* ProjectDrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDrawViewController.h; sourceTree = "<group>"; };
 		C9150A3D191D2CF700D9E5BB /* ProjectDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDrawViewController.m; sourceTree = "<group>"; };
 		C9150A41191D315F00D9E5BB /* MainSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSplitViewController.h; sourceTree = "<group>"; };
@@ -99,6 +97,8 @@
 		C94BE0B2191B93F700D574E8 /* CoreDataSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataSetup.m; sourceTree = "<group>"; };
 		C94BE0B5191B93F700D574E8 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		C94BE0B6191B93F700D574E8 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		C97A135419239C640034A23D /* CoreDataTableProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableProvider.h; sourceTree = "<group>"; };
+		C97A135519239C640034A23D /* CoreDataTableProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableProvider.m; sourceTree = "<group>"; };
 		C9998581191A8774009E85D1 /* DrawingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9998584191A8774009E85D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9998586191A8774009E85D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -194,15 +194,6 @@
 				C91282401920DB620031838A /* ProjectSettings.m */,
 			);
 			path = ProjectSettings;
-			sourceTree = "<group>";
-		};
-		C9140D301922B6A700E18B08 /* TableFetchRCDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				C9140D311922B73D00E18B08 /* TableFetchRCDelegate.h */,
-				C9140D321922B73D00E18B08 /* TableFetchRCDelegate.m */,
-			);
-			path = TableFetchRCDelegate;
 			sourceTree = "<group>";
 		};
 		C9150A3B191D2CE000D9E5BB /* ProjectDraw */ = {
@@ -316,7 +307,7 @@
 		C93D264B191AA553007A0FC6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C9140D301922B6A700E18B08 /* TableFetchRCDelegate */,
+				C97A135319239C640034A23D /* CoreDataTableProvider */,
 				C912823E1920DB4C0031838A /* ProjectSettings */,
 				C91282361920C8820031838A /* ButtonsHelper */,
 				C91282321920C3B70031838A /* AttributedStringMaster */,
@@ -343,6 +334,15 @@
 				C94BE0B6191B93F700D574E8 /* CoreDataHelper.m */,
 			);
 			path = CoreDataHelper;
+			sourceTree = "<group>";
+		};
+		C97A135319239C640034A23D /* CoreDataTableProvider */ = {
+			isa = PBXGroup;
+			children = (
+				C97A135419239C640034A23D /* CoreDataTableProvider.h */,
+				C97A135519239C640034A23D /* CoreDataTableProvider.m */,
+			);
+			path = CoreDataTableProvider;
 			sourceTree = "<group>";
 		};
 		C9998578191A8774009E85D1 = {
@@ -614,6 +614,7 @@
 				C9150A50191D4AA700D9E5BB /* DrawingObjectPointsMaster.m in Sources */,
 				C9150A4C191D468700D9E5BB /* DrawingTouchesReceiverView.m in Sources */,
 				C93AF0AA191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m in Sources */,
+				C97A135619239C640034A23D /* CoreDataTableProvider.m in Sources */,
 				C9B6648F1922295700D952F5 /* ColorInPaletteView.m in Sources */,
 				C93D264A191A9FE7007A0FC6 /* Project.m in Sources */,
 				C93D2649191A9FE0007A0FC6 /* DrawingObject.m in Sources */,
@@ -622,7 +623,6 @@
 				C92CB421192141D7006CAC2D /* LineWidthPickerDataSource.m in Sources */,
 				C91282411920DB620031838A /* ProjectSettings.m in Sources */,
 				C9150A43191D315F00D9E5BB /* MainSplitViewController.m in Sources */,
-				C9140D331922B73D00E18B08 /* TableFetchRCDelegate.m in Sources */,
 				C91282391920C8A10031838A /* ButtonsHelper.m in Sources */,
 				C94BE0B7191B93F700D574E8 /* CoreDataHelper.m in Sources */,
 				C99985DF191A9DAD009E85D1 /* ProjectDetailViewController.m in Sources */,

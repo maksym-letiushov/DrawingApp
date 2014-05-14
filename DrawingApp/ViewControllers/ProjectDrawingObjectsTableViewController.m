@@ -7,12 +7,12 @@
 //
 
 #import "ProjectDrawingObjectsTableViewController.h"
-#import "TableFetchRCDelegate.h"
+#import "CoreDataTableProvider.h"
 
 @interface ProjectDrawingObjectsTableViewController ()
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, strong) TableFetchRCDelegate *projectObjectsFetchRCDelegate;
+@property (nonatomic, strong) CoreDataTableProvider *projectObjectsTableProvider;
 
 @end
 
@@ -22,10 +22,7 @@
 {
     [super viewDidLoad];
     
-    self.clearsSelectionOnViewWillAppear = NO;
-    
-    [self setupProjectObjectsFetchRCDelegate];
-    [self setupFetchedResultsController];
+    [self setupProjectObjectsTableProvider];
 }
 
 - (void)viewWillLayoutSubviews
@@ -39,68 +36,40 @@
     self.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.view.bounds].CGPath;
 }
 
-- (void)setupFetchedResultsController
+- (NSFetchedResultsController *)fetchedResultsController
 {
-    self.fetchedResultsController = [CoreDataHelper fetchResultControllerForDrawingObjectsInProject:self.project];
-    self.fetchedResultsController.delegate = self.projectObjectsFetchRCDelegate;
-    [self.fetchedResultsController performFetch:nil];
-    
-    [self.tableView reloadData];
+    if (!_fetchedResultsController) {
+        _fetchedResultsController = [CoreDataHelper fetchResultControllerForDrawingObjectsInProject:self.project];
+    }
+    return _fetchedResultsController;
 }
 
-- (void)setupProjectObjectsFetchRCDelegate
+- (void)setupProjectObjectsTableProvider
 {
     WeakSelf;
     
-    self.projectObjectsFetchRCDelegate = [TableFetchRCDelegate new];
-    self.projectObjectsFetchRCDelegate.needSelectRowForCorrespondingInsertedObject = YES;
-    self.projectObjectsFetchRCDelegate.tableView = self.tableView;
-    [self.projectObjectsFetchRCDelegate setUpdateCellCallback:^(UITableViewCell *cell, NSIndexPath *indexPath) {
-        [weakSelf configureCell:cell atIndexPath:indexPath];
-    }];
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [[self.fetchedResultsController sections] count];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        DrawingObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        
-        [self.project removeDrawingObjectsObject:object];
+    self.projectObjectsTableProvider = [[CoreDataTableProvider alloc] initWithTableView:self.tableView fetchedResultController:self.fetchedResultsController];
+    
+    self.projectObjectsTableProvider.editingAllowed = YES;
+    self.projectObjectsTableProvider.reorderAllowed = NO;
+    self.projectObjectsTableProvider.shouldSelectRowForNewlyInsertedObject = YES;
+    
+    self.projectObjectsTableProvider.CellReuseIdentifierBlock = ^(NSIndexPath *indexPath, DrawingObject *drawingObject) {
+        return @"Cell";
+    };
+    
+    self.projectObjectsTableProvider.ConfigureCellBlock = ^(UITableViewCell *cell, NSIndexPath *indexPath, DrawingObject *drawingObject) {
+        cell.clipsToBounds = YES;
+        cell.textLabel.text = [drawingObject typeString];
+    };
+    
+    self.projectObjectsTableProvider.AttemptDeleteObjectBlock = ^(NSIndexPath *indexPath, DrawingObject *drawingObject) {
+        [weakSelf.project removeDrawingObjectsObject:drawingObject];
         [[CoreDataSetup shared] saveContext];
-    }
-}
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    cell.clipsToBounds = YES;
-    DrawingObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [object typeString];
+    };
+    self.projectObjectsTableProvider.SelectRowBlock = ^(NSIndexPath *indexPath, Project *project) {
+        
+    };
 }
 
 @end

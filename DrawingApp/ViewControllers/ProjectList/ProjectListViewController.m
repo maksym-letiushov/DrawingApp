@@ -8,15 +8,13 @@
 
 #import "ProjectListViewController.h"
 #import "ProjectDetailViewController.h"
-#import "TableFetchRCDelegate.h"
+#import "CoreDataTableProvider.h"
 
 @interface ProjectListViewController ()
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) ProjectDetailViewController *detailViewController;
-@property (strong, nonatomic) TableFetchRCDelegate *projectListFetchRCDelegate;
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+@property (strong, nonatomic) CoreDataTableProvider *projectListTableProvider;
 
 @end
 
@@ -34,16 +32,14 @@
     [super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                               target:self
-                                                                               action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                           target:self
+                                                                                           action:@selector(insertNewObject:)];
     
     self.detailViewController = (ProjectDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    [self setupProjectListFetchRCDelegate];
-    [self setupFetchedResultController];
+    [self setupProjectListTableProvider];
 }
 
 - (void)insertNewObject:(id)sender
@@ -55,83 +51,43 @@
     [self.detailViewController editProject];
 }
 
-#pragma mark - Table View
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSFetchedResultsController *)fetchedResultsController
 {
-    return [[self.fetchedResultsController sections] count];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        if (project == self.detailViewController.project) {
-            self.detailViewController.project = nil;
-        }
-        [CoreDataHelper deleteProject:project];
-        [[CoreDataSetup shared] saveContext];
+    if (!_fetchedResultsController) {
+        _fetchedResultsController = [CoreDataHelper fetchResultControllerForProjects];
     }
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // The table view should not be re-orderable.
-    return NO;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    Project *project = (Project *)[[self fetchedResultsController] objectAtIndexPath:indexPath];
-    self.detailViewController.project = project;
+    return _fetchedResultsController;
 }
 
 #pragma mark - Fetched results controller
 
-- (void)setupFetchedResultController
+- (void)setupProjectListTableProvider
 {
-    self.fetchedResultsController = [CoreDataHelper fetchResultControllerForProjects];
-    self.fetchedResultsController.delegate = self.projectListFetchRCDelegate;
-    [self.fetchedResultsController performFetch:nil];
+    WeakSelf;
     
-    [self.tableView reloadData];
-}
-
-- (void)setupProjectListFetchRCDelegate
-{
-    WeakSelf
+    self.projectListTableProvider = [[CoreDataTableProvider alloc] initWithTableView:self.tableView fetchedResultController:self.fetchedResultsController];
+    self.projectListTableProvider.editingAllowed = YES;
+    self.projectListTableProvider.reorderAllowed = NO;
+    self.projectListTableProvider.shouldSelectRowForNewlyInsertedObject = YES;
     
-    self.projectListFetchRCDelegate = [TableFetchRCDelegate new];
-    self.projectListFetchRCDelegate.needSelectRowForCorrespondingInsertedObject = YES;
-    self.projectListFetchRCDelegate.tableView = self.tableView;
+    self.projectListTableProvider.CellReuseIdentifierBlock = ^(NSIndexPath *indexPath, Project *project) {
+        return @"Cell";
+    };
     
-    [self.projectListFetchRCDelegate setUpdateCellCallback:^(UITableViewCell *cell, NSIndexPath *indexPath) {
-        [weakSelf configureCell:cell atIndexPath:indexPath];
-    }];
-}
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    Project *project = (Project *) [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = project.name;
+    self.projectListTableProvider.ConfigureCellBlock = ^(UITableViewCell *cell, NSIndexPath *indexPath, Project *project) {
+        cell.textLabel.text = project.name;
+    };
+    
+    self.projectListTableProvider.AttemptDeleteObjectBlock = ^(NSIndexPath *indexPath, Project *project) {
+        if (project == weakSelf.detailViewController.project) {
+            weakSelf.detailViewController.project = nil;
+        }
+        [CoreDataHelper deleteProject:project];
+        [[CoreDataSetup shared] saveContext];
+    };
+    self.projectListTableProvider.SelectRowBlock = ^(NSIndexPath *indexPath, Project *project) {
+        weakSelf.detailViewController.project = project;
+    };
 }
 
 @end
