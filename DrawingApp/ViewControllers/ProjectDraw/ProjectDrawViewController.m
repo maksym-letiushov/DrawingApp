@@ -159,9 +159,16 @@
 
 - (void)setupProjectDrawingObjectsTableViewController
 {
+    WeakSelf;
+    
     self.projectDrawingObjectsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"projectDrawingObjectsStoryboardID"];
     self.projectDrawingObjectsViewController.project = self.project;
     self.projectDrawingObjectsViewController.view.frame = CGRectMake(CGRectGetWidth(self.view.frame)-200, self.topLayoutGuide.length, 200, CGRectGetHeight(self.view.frame)-self.topLayoutGuide.length-self.bottomLayoutGuide.length);
+    
+    self.projectDrawingObjectsViewController.SelectDrawingObjectBlock = ^(DrawingObject *drawingObject){
+        weakSelf.projectPictureView.selectedObject = drawingObject;
+    };
+    
     [self.view addSubview:self.projectDrawingObjectsViewController.view];
 }
 

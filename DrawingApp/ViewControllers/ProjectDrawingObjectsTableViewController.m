@@ -67,8 +67,10 @@
         [weakSelf.project removeDrawingObjectsObject:drawingObject];
         [[CoreDataSetup shared] saveContext];
     };
-    self.projectObjectsTableProvider.SelectRowBlock = ^(NSIndexPath *indexPath, Project *project) {
-        
+    self.projectObjectsTableProvider.SelectRowBlock = ^(NSIndexPath *indexPath, DrawingObject *drawingObject) {
+        if (weakSelf.SelectDrawingObjectBlock) {
+            weakSelf.SelectDrawingObjectBlock(drawingObject);
+        }
     };
 }
 

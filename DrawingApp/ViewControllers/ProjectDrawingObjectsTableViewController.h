@@ -12,4 +12,6 @@
 
 @property (nonatomic, weak) Project *project;
 
+@property (nonatomic, copy) void(^SelectDrawingObjectBlock)(DrawingObject *drawingObject);
+
 @end

@@ -21,6 +21,18 @@
     return self;
 }
 
+- (void)setProject:(Project *)project
+{
+    _project = project;
+    [self setNeedsDisplay];
+}
+
+- (void)setSelectedObject:(DrawingObject *)selectedObject
+{
+    _selectedObject = selectedObject;
+    [self setNeedsDisplay];
+}
+
 - (void)drawRect:(CGRect)rect
 {
     if (!self.project) {
@@ -74,6 +86,15 @@
     }
     
     [bezierPath setLineWidth:[drawingObject.lineWidth integerValue]];
+    
+    if (drawingObject == self.selectedObject) {
+        //// Shadow Declarations
+        UIColor* shadow = [UIColor redColor];
+        CGSize shadowOffset = CGSizeMake(0.1, -0.1);
+        CGFloat shadowBlurRadius = 15;
+        
+        CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, [shadow CGColor]);
+    }
     
     [bezierPath fill];
     [bezierPath stroke];

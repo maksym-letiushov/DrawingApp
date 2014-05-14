@@ -11,7 +11,9 @@
 
 @interface ProjectPictureView : UIView
 
-@property (nonatomic, strong) Project *project;
+@property (nonatomic, weak) Project *project;
+
+@property (nonatomic, weak) DrawingObject *selectedObject;
 
 - (void)saveProjectPreviewImage;
 
