@@ -58,7 +58,34 @@
     if (!points.count) {
         return ;
     }
-
+    
+    if (drawingObject.hasAffineTransformations) {
+        CGPoint center = drawingObject.center;
+        
+        if (drawingObject.translationX.floatValue != 0.0 || drawingObject.translationY.floatValue != 0.0) {
+            // make translation for center and all points
+            center = [self translatedPoint:center
+                                        tx:drawingObject.translationX.floatValue
+                                        ty:drawingObject.translationY.floatValue];
+            points = [self translateDrawingPointsForDrawingObject:drawingObject];
+        }
+        
+        
+        // translate points to make center of coordinate system in the center of object
+        points = [self translateDrawingPoints:points toCoordinateSystemWithCenter:center];
+        CGContextTranslateCTM(context, center.x, center.y);
+        
+        //scale
+        if (drawingObject.scale.floatValue != 0) {
+            CGContextScaleCTM(context, drawingObject.scale.floatValue, drawingObject.scale.floatValue);
+        }
+        
+        //rotation
+        if (drawingObject.angle.floatValue != 0) {
+            CGContextRotateCTM(context, drawingObject.angle.floatValue);
+        }
+    }
+    
     [drawingObject.fillColor setFill];
     [drawingObject.strokeColor setStroke];
 
@@ -78,10 +105,10 @@
         [bezierPath moveToPoint:[(DrawingPoint *)points.firstObject CGPoint]];
         [bezierPath addLineToPoint:[(DrawingPoint *)points.lastObject CGPoint]];
     } else if ([drawingObject.type integerValue] == DRAWING_OBJECT_TYPE_RECTANGLE) {
-        CGRect rect = [self rectForOvalOrRectangleForDrawingObject:drawingObject];
+        CGRect rect = [self rectForOvalOrRectangleFromPoints:points];
         bezierPath = [UIBezierPath bezierPathWithRect:rect];
     } else if ([drawingObject.type integerValue] == DRAWING_OBJECT_TYPE_OVAL) {
-        CGRect rect = [self rectForOvalOrRectangleForDrawingObject:drawingObject];
+        CGRect rect = [self rectForOvalOrRectangleFromPoints:points];
         bezierPath = [UIBezierPath bezierPathWithOvalInRect:rect];
     }
     
@@ -102,10 +129,8 @@
     CGContextRestoreGState(context);
 }
 
-- (CGRect)rectForOvalOrRectangleForDrawingObject:(DrawingObject *)drawingObject
+- (CGRect)rectForOvalOrRectangleFromPoints:(NSArray *)points
 {
-    NSArray *points = [drawingObject pointsArray];
-    
     CGPoint firstPoint = [(DrawingPoint *)points.firstObject CGPoint];
     CGPoint lastPoint = [(DrawingPoint *)points.lastObject CGPoint];
 
@@ -116,6 +141,46 @@
     rect.size.height = ABS(firstPoint.y - lastPoint.y);
     
     return rect;
+}
+
+- (NSArray *)translateDrawingPointsForDrawingObject:(DrawingObject *)object
+{
+    NSArray *points = [object pointsArray];
+    
+    NSMutableArray *results = [NSMutableArray arrayWithCapacity:points.count];
+    for (DrawingPoint *drawingPoint in points) {
+        CGPoint translatedPoint = [self translatedPoint:[drawingPoint CGPoint]
+                                                     tx:object.translationX.floatValue
+                                                     ty:object.translationY.floatValue];
+        
+        DrawingPoint *translatedDrawingPoint = [DrawingPoint pointFromCGPoint:translatedPoint];
+        [results addObject:translatedDrawingPoint];
+    }
+    return results;
+}
+
+- (CGPoint)translatedPoint:(CGPoint)point tx:(CGFloat)tx ty:(CGFloat)ty
+{
+    point.x += tx;
+    point.y += ty;
+    
+    return point;
+}
+
+- (NSArray *)translateDrawingPoints:(NSArray *)drawingPoints toCoordinateSystemWithCenter:(CGPoint)center
+{
+    NSMutableArray *results = [NSMutableArray arrayWithCapacity:drawingPoints.count];
+    for (DrawingPoint *drawingPoint in drawingPoints) {
+        CGPoint translatedPoint = [self translatePoint:[drawingPoint CGPoint] toCoordinateSystemWithCenter:center];
+        DrawingPoint *translatedDrawingPoint = [DrawingPoint pointFromCGPoint:translatedPoint];
+        [results addObject:translatedDrawingPoint];
+    }
+    return results;
+}
+
+- (CGPoint)translatePoint:(CGPoint)point toCoordinateSystemWithCenter:(CGPoint)center
+{
+    return CGPointMake(point.x-center.x, point.y-center.y);
 }
 
 - (void)saveProjectPreviewImage

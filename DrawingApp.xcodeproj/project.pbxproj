@@ -99,6 +99,7 @@
 		C94BE0B6191B93F700D574E8 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		C97A135419239C640034A23D /* CoreDataTableProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableProvider.h; sourceTree = "<group>"; };
 		C97A135519239C640034A23D /* CoreDataTableProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableProvider.m; sourceTree = "<group>"; };
+		C97F15D31925035B00D46A11 /* DrawingApp 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DrawingApp 4.xcdatamodel"; sourceTree = "<group>"; };
 		C9998581191A8774009E85D1 /* DrawingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9998584191A8774009E85D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9998586191A8774009E85D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -863,9 +864,10 @@
 			children = (
 				C93642B7191FB97100F5BD5B /* DrawingApp 2.xcdatamodel */,
 				C9B664901922360500D952F5 /* DrawingApp 3.xcdatamodel */,
+				C97F15D31925035B00D46A11 /* DrawingApp 4.xcdatamodel */,
 				C999859C191A8774009E85D1 /* DrawingApp.xcdatamodel */,
 			);
-			currentVersion = C9B664901922360500D952F5 /* DrawingApp 3.xcdatamodel */;
+			currentVersion = C97F15D31925035B00D46A11 /* DrawingApp 4.xcdatamodel */;
 			path = DrawingApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

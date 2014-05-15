@@ -31,5 +31,9 @@
 
 - (NSString *)typeString;
 
+- (CGPoint)center;
+
+- (BOOL)hasAffineTransformations;
+
 @end
 

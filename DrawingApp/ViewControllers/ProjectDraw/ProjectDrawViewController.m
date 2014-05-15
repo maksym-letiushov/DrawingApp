@@ -167,6 +167,13 @@
     
     self.projectDrawingObjectsViewController.SelectDrawingObjectBlock = ^(DrawingObject *drawingObject){
         weakSelf.projectPictureView.selectedObject = drawingObject;
+        
+        //test code
+//        drawingObject.translationX = @(50.0);
+//        drawingObject.translationY = @(50.0);
+//        drawingObject.angle = @(0.5);
+//        drawingObject.scale = @(2.0);
+        [weakSelf.projectPictureView setNeedsDisplay];
     };
     
     [self.view addSubview:self.projectDrawingObjectsViewController.view];

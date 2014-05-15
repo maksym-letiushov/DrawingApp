@@ -19,6 +19,10 @@
 @property (nonatomic, retain) NSData * strokeColorData;
 @property (nonatomic, retain) NSData * fillColorData;
 @property (nonatomic, retain) NSNumber * zIndex;
+@property (nonatomic, retain) NSNumber * translationX;
+@property (nonatomic, retain) NSNumber * translationY;
+@property (nonatomic, retain) NSNumber * scale;
+@property (nonatomic, retain) NSNumber * angle;
 @property (nonatomic, retain) Project *project;
 
 @end

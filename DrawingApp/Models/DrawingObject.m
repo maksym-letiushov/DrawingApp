@@ -18,6 +18,10 @@
 @dynamic strokeColorData;
 @dynamic fillColorData;
 @dynamic zIndex;
+@dynamic translationX;
+@dynamic translationY;
+@dynamic scale;
+@dynamic angle;
 @dynamic project;
 
 @end

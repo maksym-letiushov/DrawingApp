@@ -97,4 +97,33 @@
     return @"";
 }
 
+- (CGPoint)center
+{
+    NSInteger minX=NSIntegerMax, minY=NSIntegerMax;
+    NSInteger maxX=NSIntegerMin, maxY=NSIntegerMin;
+    
+    NSArray *points = self.pointsArray;
+    for (DrawingPoint *drawingPoint in points) {
+        CGPoint point = [drawingPoint CGPoint];
+        if (point.x < minX) {
+            minX = point.x;
+        }
+        if (point.y < minY) {
+            minY = point.y;
+        }
+        if (point.x > maxX) {
+            maxX = point.x;
+        }
+        if (point.y > maxY) {
+            maxY = point.y;
+        }
+    }
+    return CGPointMake((minX+maxX)/2, (minY+maxY)/2);
+}
+
+- (BOOL)hasAffineTransformations
+{
+    return (self.scale.integerValue > 1) || (self.angle.floatValue != 0.0) || (self.translationX.floatValue !=0.0) || (self.translationY.floatValue !=0.0);
+}
+
 @end
