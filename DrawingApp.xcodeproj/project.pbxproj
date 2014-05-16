@@ -24,6 +24,8 @@
 		C93AF0AA191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AF0A9191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m */; };
 		C93D2649191A9FE0007A0FC6 /* DrawingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985CA191A9A29009E85D1 /* DrawingObject.m */; };
 		C93D264A191A9FE7007A0FC6 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = C99985CC191A9A29009E85D1 /* Project.m */; };
+		C949AC37192610E300E76993 /* TransformTouchesReceiverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C949AC36192610E300E76993 /* TransformTouchesReceiverView.m */; };
+		C949AC3B1926395000E76993 /* AffineTransformHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C949AC3A1926395000E76993 /* AffineTransformHelper.m */; };
 		C94BE0B3191B93F700D574E8 /* CoreDataSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = C94BE0B2191B93F700D574E8 /* CoreDataSetup.m */; };
 		C94BE0B7191B93F700D574E8 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C94BE0B6191B93F700D574E8 /* CoreDataHelper.m */; };
 		C97A135619239C640034A23D /* CoreDataTableProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C97A135519239C640034A23D /* CoreDataTableProvider.m */; };
@@ -93,6 +95,10 @@
 		C93AF0A6191B72D800A60A82 /* Project+ProjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+ProjectAdditions.m"; sourceTree = "<group>"; };
 		C93AF0A8191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DrawingObject+DrawingObjectAdditions.h"; sourceTree = "<group>"; };
 		C93AF0A9191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DrawingObject+DrawingObjectAdditions.m"; sourceTree = "<group>"; };
+		C949AC35192610E300E76993 /* TransformTouchesReceiverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformTouchesReceiverView.h; sourceTree = "<group>"; };
+		C949AC36192610E300E76993 /* TransformTouchesReceiverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransformTouchesReceiverView.m; sourceTree = "<group>"; };
+		C949AC391926395000E76993 /* AffineTransformHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AffineTransformHelper.h; sourceTree = "<group>"; };
+		C949AC3A1926395000E76993 /* AffineTransformHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AffineTransformHelper.m; sourceTree = "<group>"; };
 		C94BE0B1191B93F700D574E8 /* CoreDataSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataSetup.h; sourceTree = "<group>"; };
 		C94BE0B2191B93F700D574E8 /* CoreDataSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataSetup.m; sourceTree = "<group>"; };
 		C94BE0B5191B93F700D574E8 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
@@ -218,6 +224,7 @@
 		C9150A44191D404B00D9E5BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C949AC34192610AC00E76993 /* TransformTouchesReceiverView */,
 				C9B6648C1922292400D952F5 /* ColorInPaletteView */,
 				C9150A49191D460300D9E5BB /* DrawingTouchesReceiverView */,
 				C9150A45191D40CC00D9E5BB /* ProjecPictureView */,
@@ -308,6 +315,7 @@
 		C93D264B191AA553007A0FC6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C949AC381926393800E76993 /* CGAffineTransformHelper */,
 				C97A135319239C640034A23D /* CoreDataTableProvider */,
 				C912823E1920DB4C0031838A /* ProjectSettings */,
 				C91282361920C8820031838A /* ButtonsHelper */,
@@ -317,6 +325,24 @@
 				C94BE0B0191B93F700D574E8 /* CoreDataSetup */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C949AC34192610AC00E76993 /* TransformTouchesReceiverView */ = {
+			isa = PBXGroup;
+			children = (
+				C949AC35192610E300E76993 /* TransformTouchesReceiverView.h */,
+				C949AC36192610E300E76993 /* TransformTouchesReceiverView.m */,
+			);
+			path = TransformTouchesReceiverView;
+			sourceTree = "<group>";
+		};
+		C949AC381926393800E76993 /* CGAffineTransformHelper */ = {
+			isa = PBXGroup;
+			children = (
+				C949AC391926395000E76993 /* AffineTransformHelper.h */,
+				C949AC3A1926395000E76993 /* AffineTransformHelper.m */,
+			);
+			path = CGAffineTransformHelper;
 			sourceTree = "<group>";
 		};
 		C94BE0B0191B93F700D574E8 /* CoreDataSetup */ = {
@@ -612,6 +638,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C949AC3B1926395000E76993 /* AffineTransformHelper.m in Sources */,
+				C949AC37192610E300E76993 /* TransformTouchesReceiverView.m in Sources */,
 				C9150A50191D4AA700D9E5BB /* DrawingObjectPointsMaster.m in Sources */,
 				C9150A4C191D468700D9E5BB /* DrawingTouchesReceiverView.m in Sources */,
 				C93AF0AA191B738B00A60A82 /* DrawingObject+DrawingObjectAdditions.m in Sources */,

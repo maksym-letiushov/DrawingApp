@@ -60,12 +60,20 @@
     
     self.projectObjectsTableProvider.ConfigureCellBlock = ^(UITableViewCell *cell, NSIndexPath *indexPath, DrawingObject *drawingObject) {
         cell.clipsToBounds = YES;
+        cell.backgroundColor = [UIColor clearColor];
+        UIView *bgView = [UIView new];
+        bgView.backgroundColor = nil;
+        cell.backgroundView = bgView;
+        [bgView sizeToFit];
         cell.textLabel.text = [drawingObject typeString];
     };
     
     self.projectObjectsTableProvider.AttemptDeleteObjectBlock = ^(NSIndexPath *indexPath, DrawingObject *drawingObject) {
         [weakSelf.project removeDrawingObjectsObject:drawingObject];
         [[CoreDataSetup shared] saveContext];
+        if (weakSelf.DeleteDrawingObjectBlock) {
+            weakSelf.DeleteDrawingObjectBlock(drawingObject);
+        }
     };
     self.projectObjectsTableProvider.SelectRowBlock = ^(NSIndexPath *indexPath, DrawingObject *drawingObject) {
         if (weakSelf.SelectDrawingObjectBlock) {

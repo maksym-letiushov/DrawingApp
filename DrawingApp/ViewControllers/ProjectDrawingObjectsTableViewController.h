@@ -14,4 +14,6 @@
 
 @property (nonatomic, copy) void(^SelectDrawingObjectBlock)(DrawingObject *drawingObject);
 
+@property (nonatomic, copy) void(^DeleteDrawingObjectBlock)(DrawingObject *drawingObject);
+
 @end

@@ -32,6 +32,8 @@
 - (NSString *)typeString;
 
 - (CGPoint)center;
+- (CGRect)frame;
+- (CGRect)frameAcceptableForTouches;
 
 - (BOOL)hasAffineTransformations;
 

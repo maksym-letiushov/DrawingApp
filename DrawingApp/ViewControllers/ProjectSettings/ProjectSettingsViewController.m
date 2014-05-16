@@ -21,16 +21,22 @@
 @property (weak, nonatomic) IBOutlet UIButton *lineButton;
 @property (weak, nonatomic) IBOutlet UIButton *ovalButton;
 @property (weak, nonatomic) IBOutlet UIButton *rectButton;
+@property (weak, nonatomic) IBOutlet UIButton *selectButton;
 @property (weak, nonatomic) IBOutlet ColorInPaletteView *strokeColorView;
 @property (weak, nonatomic) IBOutlet ColorInPaletteView *fillColorView;
 @property (weak, nonatomic) IBOutlet UIPickerView *lineWidthPickerView;
 @property (nonatomic, strong) UIPopoverController *popover;
 
-- (IBAction)selectDrawingObjectTypeWithButton:(UIButton *)sender;
-
 @end
 
 @implementation ProjectSettingsViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self setupUI];
+}
 
 - (void)setupUI
 {
@@ -39,35 +45,40 @@
     self.ovalButton.tag = DRAWING_OBJECT_TYPE_OVAL;
     self.rectButton.tag = DRAWING_OBJECT_TYPE_RECTANGLE;
 
-    [self selectDrawingObjectType:[ProjectSettings shared].drawObjectType];
     [self setupLineWidthPickerDataSource];
 
-    
-    self.strokeColorView.fillColor = [ProjectSettings shared].strokeColor;
-    self.fillColorView.fillColor = [ProjectSettings shared].fillColor;
+    [self updateUI];
     
     WeakSelf;
     
     self.strokeColorView.Tap = ^{
         [weakSelf showPopoverWithCompletionHandler:^(UIColor *color) {
-            weakSelf.strokeColorView.fillColor = color;
             [ProjectSettings shared].strokeColor = color;
+            [weakSelf updateUI];
         } fromRect:self.strokeColorView.frame];
     };
     
     self.fillColorView.Tap = ^{
         [weakSelf showPopoverWithCompletionHandler:^(UIColor *color) {
-            weakSelf.fillColorView.fillColor = color;
             [ProjectSettings shared].fillColor = color;
+            [weakSelf updateUI];
         } fromRect:self.fillColorView.frame];
     };
 }
 
-- (void)viewDidLoad
+- (void)updateUI
 {
-    [super viewDidLoad];
+    enum DRAW_INSTRUMENT_TYPE type = [ProjectSettings shared].drawInstrumentType;
+    if (type == DRAW_INSTRUMENT_TYPE_DRAWING_OBJECT) {
+        [self selectDrawingObjectType:[ProjectSettings shared].drawObjectType];
+        self.selectButton.selected = NO;
+    } else if (type == DRAW_INSTRUMENT_TYPE_SELECTION) {
+        [self deselectAllDrawingObjectTypeButtons];
+        self.selectButton.selected = YES;
+    }
     
-    [self setupUI];
+    self.strokeColorView.fillColor = [ProjectSettings shared].strokeColor;
+    self.fillColorView.fillColor = [ProjectSettings shared].fillColor;
 }
 
 - (void)viewWillLayoutSubviews
@@ -114,11 +125,36 @@
 
 - (IBAction)selectDrawingObjectTypeWithButton:(UIButton *)sender
 {
-    [self selectDrawingObjectType:sender.tag];
+    BOOL needNotifyAboutInstumentChange = NO;
+    if ([ProjectSettings shared].drawInstrumentType != DRAW_INSTRUMENT_TYPE_DRAWING_OBJECT) {
+        needNotifyAboutInstumentChange = YES;
+    }
     
+    [ProjectSettings shared].drawInstrumentType = DRAW_INSTRUMENT_TYPE_DRAWING_OBJECT;
     [ProjectSettings shared].drawObjectType = sender.tag;
     
-    self.DrawingObjectTypeDidUpdate();
+    [self updateUI];
+    
+    if (needNotifyAboutInstumentChange) {
+        if (self.DrawingInstrumentTypeUpdate) {
+            self.DrawingInstrumentTypeUpdate();
+        }
+    }
+    
+    if (self.DrawingObjectTypeUpdate) {
+        self.DrawingObjectTypeUpdate();
+    }
+}
+
+- (IBAction)switchToSelectObjects
+{
+    [ProjectSettings shared].drawInstrumentType = DRAW_INSTRUMENT_TYPE_SELECTION;
+    
+    [self updateUI];
+    
+    if (self.DrawingInstrumentTypeUpdate) {
+        self.DrawingInstrumentTypeUpdate();
+    }
 }
 
 - (void)showPopoverWithCompletionHandler:(void(^)(UIColor *color))completionHandler fromRect:(CGRect)rect

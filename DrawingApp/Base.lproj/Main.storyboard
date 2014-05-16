@@ -75,20 +75,31 @@
                                     <action selector="selectDrawingObjectTypeWithButton:" destination="eY4-NC-H1E" eventType="touchUpInside" id="0Um-mA-gZF"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ENt-mE-gV7">
+                                <rect key="frame" x="0.0" y="100" width="200" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl1-gL-ejq">
+                                <rect key="frame" x="15" y="80" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="☜">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="switchToSelectObjects" destination="eY4-NC-H1E" eventType="touchUpInside" id="IeZ-va-uZb"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0YL-8A-MTC" customClass="ColorInPaletteView">
-                                <rect key="frame" x="35" y="75" width="50" height="50"/>
+                                <rect key="frame" x="68" y="75" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VoN-8V-1LJ" customClass="ColorInPaletteView">
-                                <rect key="frame" x="115" y="75" width="50" height="50"/>
+                                <rect key="frame" x="130" y="75" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ENt-mE-gV7">
-                                <rect key="frame" x="0.0" y="136" width="200" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -106,6 +117,7 @@
                         <outlet property="lineWidthPickerView" destination="ENt-mE-gV7" id="e6H-lN-KMW"/>
                         <outlet property="ovalButton" destination="D1A-RI-5Yn" id="rrs-5o-jbQ"/>
                         <outlet property="rectButton" destination="J65-0F-dw9" id="00e-Jf-14a"/>
+                        <outlet property="selectButton" destination="Cl1-gL-ejq" id="7dN-Vw-WcU"/>
                         <outlet property="strokeColorView" destination="0YL-8A-MTC" id="Obk-GD-izf"/>
                     </connections>
                 </viewController>
@@ -117,10 +129,10 @@
         <scene sceneID="aga-u0-NEB">
             <objects>
                 <tableViewController storyboardIdentifier="projectDrawingObjectsStoryboardID" id="3f9-06-Ui3" customClass="ProjectDrawingObjectsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yNV-sQ-s1F">
+                    <tableView key="view" clipsSubviews="YES" alpha="0.89999999999999991" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yNV-sQ-s1F">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="9Qy-wg-a77">
@@ -129,7 +141,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Qy-wg-a77" id="DwD-Rg-ryb">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>

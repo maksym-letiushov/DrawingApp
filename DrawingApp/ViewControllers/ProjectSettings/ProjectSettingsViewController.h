@@ -10,6 +10,9 @@
 
 @interface ProjectSettingsViewController : UIViewController
 
-@property (nonatomic, copy) void(^DrawingObjectTypeDidUpdate)(void);
+@property (nonatomic, copy) void(^DrawingObjectTypeUpdate)(void);
+@property (nonatomic, copy) void(^DrawingInstrumentTypeUpdate)(void);
+
+- (void)updateUI;
 
 @end

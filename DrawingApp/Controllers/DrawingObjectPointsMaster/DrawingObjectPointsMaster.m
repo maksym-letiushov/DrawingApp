@@ -82,6 +82,10 @@
     drawingObject.fillColor = [ProjectSettings shared].fillColor;
     drawingObject.strokeColor = [ProjectSettings shared].strokeColor;
     drawingObject.lineWidth = @([ProjectSettings shared].lineWidth);
+    drawingObject.translationX = @(0.0);
+    drawingObject.translationY = @(0.0);
+    drawingObject.scale = @(1.0);
+    drawingObject.angle = @(0.0);
     
     return drawingObject;
 }

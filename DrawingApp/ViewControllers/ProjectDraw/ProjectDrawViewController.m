@@ -13,15 +13,18 @@
 #import "ProjectSettingsViewController.h"
 #import "ProjectSettings.h"
 #import "ProjectDrawingObjectsTableViewController.h"
+#import "TransformTouchesReceiverView.h"
 
 @interface ProjectDrawViewController () <NSFetchedResultsControllerDelegate>
 
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
 @property (nonatomic, strong) ProjectPictureView *projectPictureView;
 @property (nonatomic, strong) DrawingTouchesReceiverView *drawingTouchesReceiverView;
+@property (nonatomic, strong) TransformTouchesReceiverView *transformTouchesReceiverView;
 @property (nonatomic, strong) DrawingObjectPointsMaster *drawingObjectPointsMaster;
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
 @property (nonatomic, strong) ProjectSettingsViewController *projectSettingsViewController;
 @property (nonatomic, strong) ProjectDrawingObjectsTableViewController *projectDrawingObjectsViewController;
+@property (nonatomic, weak) DrawingObject *selectedObject;
 
 @end
 
@@ -107,13 +110,17 @@
     self.navigationItem.rightBarButtonItems = @[settingsBarButtonItem, objectsBarButtonItem];
 }
 
-- (void)setupProjectPictureView
+- (CGRect)drawingRect
 {
     CGRect rect = self.view.bounds;
     rect.origin.y += self.topLayoutGuide.length;
     rect.size.height -= (self.topLayoutGuide.length + self.bottomLayoutGuide.length);
-    
-    self.projectPictureView = [[ProjectPictureView alloc] initWithFrame:rect];
+    return rect;
+}
+
+- (void)setupProjectPictureView
+{
+    self.projectPictureView = [[ProjectPictureView alloc] initWithFrame:[self drawingRect]];
     self.projectPictureView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.projectPictureView.project = self.project;
     [self.view addSubview:self.projectPictureView];
@@ -121,7 +128,7 @@
 
 - (void)setupDrawingTouchesReceiverView
 {
-    self.drawingTouchesReceiverView = [[DrawingTouchesReceiverView alloc] initWithFrame:self.projectPictureView.frame];
+    self.drawingTouchesReceiverView = [[DrawingTouchesReceiverView alloc] initWithFrame:[self drawingRect]];
     self.drawingTouchesReceiverView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.drawingTouchesReceiverView.drawingGestureReceiver = nil;
     [self.view addSubview:self.drawingTouchesReceiverView];
@@ -150,8 +157,23 @@
     self.projectSettingsViewController.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
     self.projectSettingsViewController.view.frame = CGRectMake(CGRectGetWidth(self.view.frame)-200, self.topLayoutGuide.length, 200, 400);
     
-    [self.projectSettingsViewController setDrawingObjectTypeDidUpdate:^{
+    [self.projectSettingsViewController setDrawingObjectTypeUpdate:^{
         [weakSelf setupDrawingObjectPointsMaster];
+    }];
+    
+    [self.projectSettingsViewController setDrawingInstrumentTypeUpdate:^{
+        enum DRAW_INSTRUMENT_TYPE type = [ProjectSettings shared].drawInstrumentType;
+        if (type == DRAW_INSTRUMENT_TYPE_DRAWING_OBJECT) {
+            weakSelf.selectedObject = nil;
+            weakSelf.projectPictureView.selectedObject = nil;
+            [weakSelf.transformTouchesReceiverView removeFromSuperview];
+            weakSelf.transformTouchesReceiverView = nil;
+            weakSelf.drawingTouchesReceiverView.hidden = NO;    //in order to start receive touches
+        } else if (type == DRAW_INSTRUMENT_TYPE_SELECTION) {
+            weakSelf.drawingTouchesReceiverView.hidden = YES;   //in order to prevent receive touches
+        }
+        
+        [weakSelf.projectPictureView setNeedsDisplay];
     }];
     
     [self.view addSubview:self.projectSettingsViewController.view];
@@ -165,18 +187,69 @@
     self.projectDrawingObjectsViewController.project = self.project;
     self.projectDrawingObjectsViewController.view.frame = CGRectMake(CGRectGetWidth(self.view.frame)-200, self.topLayoutGuide.length, 200, CGRectGetHeight(self.view.frame)-self.topLayoutGuide.length-self.bottomLayoutGuide.length);
     
-    self.projectDrawingObjectsViewController.SelectDrawingObjectBlock = ^(DrawingObject *drawingObject){
+    self.projectDrawingObjectsViewController.SelectDrawingObjectBlock = ^(DrawingObject *drawingObject) {
+        [ProjectSettings shared].drawInstrumentType = DRAW_INSTRUMENT_TYPE_SELECTION;
+        [weakSelf.projectSettingsViewController updateUI];
+        weakSelf.selectedObject = drawingObject;
         weakSelf.projectPictureView.selectedObject = drawingObject;
-        
-        //test code
-//        drawingObject.translationX = @(50.0);
-//        drawingObject.translationY = @(50.0);
-//        drawingObject.angle = @(0.5);
-//        drawingObject.scale = @(2.0);
+        [weakSelf setupTransformTouchesReceiverViewForSelectedDrawingObject];
+        weakSelf.drawingTouchesReceiverView.hidden = YES;
         [weakSelf.projectPictureView setNeedsDisplay];
     };
     
+    self.projectDrawingObjectsViewController.DeleteDrawingObjectBlock = ^(DrawingObject *drawingObject) {
+        if (weakSelf.selectedObject == drawingObject) {
+            weakSelf.selectedObject = nil;
+            [weakSelf.transformTouchesReceiverView removeFromSuperview];
+            weakSelf.transformTouchesReceiverView = nil;
+        }
+    };
+    
     [self.view addSubview:self.projectDrawingObjectsViewController.view];
+}
+
+- (void)setupTransformTouchesReceiverViewForSelectedDrawingObject
+{
+    WeakSelf;
+    
+    if (!self.selectedObject) {
+        return ;
+    }
+    
+    if (self.transformTouchesReceiverView) {
+        [self.transformTouchesReceiverView removeFromSuperview];
+    }
+    
+    CGRect frame = [self.selectedObject frameAcceptableForTouches];
+    
+    CGPoint translation = CGPointMake(self.selectedObject.translationX.floatValue, self.selectedObject.translationY.floatValue);
+    
+    self.transformTouchesReceiverView = [[TransformTouchesReceiverView alloc] initWithFrame:frame
+                                                                                translation:translation
+                                                                                      scale:self.selectedObject.scale.floatValue
+                                                                                      angle:self.selectedObject.angle.floatValue];
+    
+    [self.transformTouchesReceiverView setTranslate:^(CGFloat tx, CGFloat ty) {
+        weakSelf.selectedObject.translationX = @(tx);
+        weakSelf.selectedObject.translationY = @(ty);
+        [weakSelf.projectPictureView setNeedsDisplay];
+    }];
+    
+    [self.transformTouchesReceiverView setScale:^(CGFloat scale) {
+        weakSelf.selectedObject.scale = @(scale);
+        [weakSelf.projectPictureView setNeedsDisplay];
+    }];
+    
+    [self.transformTouchesReceiverView setRotate:^(CGFloat angle) {
+        weakSelf.selectedObject.angle = @(angle);
+        [weakSelf.projectPictureView setNeedsDisplay];
+    }];
+    
+    [self.transformTouchesReceiverView setTransformCompletionBlock:^{
+        [[CoreDataSetup shared] saveContext];
+    }];
+    
+    [self.projectPictureView addSubview:self.transformTouchesReceiverView];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
@@ -185,16 +258,5 @@
 {
     [self.projectPictureView setNeedsDisplay];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

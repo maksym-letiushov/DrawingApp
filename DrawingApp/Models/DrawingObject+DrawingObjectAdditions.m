@@ -97,7 +97,7 @@
     return @"";
 }
 
-- (CGPoint)center
+- (CGRect)frame
 {
     NSInteger minX=NSIntegerMax, minY=NSIntegerMax;
     NSInteger maxX=NSIntegerMin, maxY=NSIntegerMin;
@@ -118,12 +118,43 @@
             maxY = point.y;
         }
     }
-    return CGPointMake((minX+maxX)/2, (minY+maxY)/2);
+    
+    return CGRectMake(minX, minY, maxX-minX,maxY-minY);
+}
+
+#define MIN_ACCEPTABLE_WIDTH_FOR_TOUCHES 200
+#define MIN_ACCEPTABLE_HEIGHT_FOR_TOUCHES 200
+
+- (CGRect)frameAcceptableForTouches
+{
+    CGRect frame = self.frame;
+    
+    CGFloat width = frame.size.width;
+    CGFloat height = frame.size.height;
+    
+    if (width < MIN_ACCEPTABLE_WIDTH_FOR_TOUCHES) {
+        frame.size.width = MIN_ACCEPTABLE_WIDTH_FOR_TOUCHES;
+        frame.origin.x -= (MIN_ACCEPTABLE_WIDTH_FOR_TOUCHES-width)/2;
+    }
+    if (height < MIN_ACCEPTABLE_HEIGHT_FOR_TOUCHES) {
+        frame.size.height = MIN_ACCEPTABLE_HEIGHT_FOR_TOUCHES;
+        frame.origin.y -= (MIN_ACCEPTABLE_HEIGHT_FOR_TOUCHES-height)/2;
+    }
+    
+    return frame;
+}
+
+- (CGPoint)center
+{
+    CGRect frame = self.frame;
+    return CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
 }
 
 - (BOOL)hasAffineTransformations
 {
-    return (self.scale.integerValue > 1) || (self.angle.floatValue != 0.0) || (self.translationX.floatValue !=0.0) || (self.translationY.floatValue !=0.0);
+    return ((self.scale.floatValue != 1) ||
+            (self.angle.floatValue != 0.0) ||
+            (self.translationX.floatValue != 0.0) || (self.translationY.floatValue !=0.0));
 }
 
 @end
